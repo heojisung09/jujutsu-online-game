@@ -151,6 +151,7 @@ h1 .y0{color:var(--yuta0)}
 h1 .t{color:var(--toji)}
 .pick{padding:12px 3px 10px}
 .pick .nm{font-size:12px}
+.pick .en{font:500 9px/1.25 var(--f-mono);color:var(--mute);word-break:normal;overflow-wrap:anywhere;letter-spacing:-.02em}
 .pick .jp{font-size:10px}
 .pick .role{padding:2px 6px;font-size:10px}
 #foeSeg button{font-size:12px;padding:9px 2px;word-break:keep-all}
@@ -8645,7 +8646,8 @@ function renderSelect(){
   var ids=['gojo','gojos','getos','geto','hakari','sukuna','yuta','yuta0','itadori','toji','naoya','mahito','higuruma','ishigori','jogo','megumi','nanami','kashimo','dabura'];
   for(i=0;i<ids.length;i++){
     var id=ids[i],C=CH[id],on=id===me,isFoe=id===foe;
-    h+='<button type="button" class="pick" data-id="'+id+'" aria-pressed="'+on+'"><div class="token '+id+'" style="--c:'+C.color+'"></div><div class="nm">'+C.name+'</div><div class="jp">'+C.jp+'</div><span class="role">'+(on?(sel.auto?'1P':'내 캐릭터'):(isFoe?(sel.auto?'2P':'상대'):'대기'))+'</span></button>';
+    var EN={gojo:"Satoru Gojo",gojos:"Young Satoru Gojo",getos:"Young Suguru Geto",geto:"Suguru Geto",hakari:"Kinji Hakari",sukuna:"Ryomen Sukuna",yuta:"Yuta Okkotsu",yuta0:"Yuta Okkotsu (JJK 0)",itadori:"Yuji Itadori",toji:"Toji Fushiguro",naoya:"Naoya Zenin",mahito:"Mahito",higuruma:"Hiromi Higuruma",ishigori:"Ryu Ishigori",jogo:"Jogo",megumi:"Megumi Fushiguro",nanami:"Kento Nanami",kashimo:"Hajime Kashimo",dabura:"Dabura Karaba"};
+    h+='<button type="button" class="pick" data-id="'+id+'" aria-pressed="'+on+'"><div class="token '+id+'" style="--c:'+C.color+'"></div><div class="nm">'+C.name+'</div><div class="en">'+EN[id]+'</div><div class="jp">'+C.jp+'</div><span class="role">'+(on?(sel.auto?'1P':'내 캐릭터'):(isFoe?(sel.auto?'2P':'상대'):'대기'))+'</span></button>';
   }
   duel.innerHTML=h;
   var pk=duel.querySelectorAll('.pick');
