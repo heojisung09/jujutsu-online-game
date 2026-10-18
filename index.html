@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><script async src="https://www.googletagmanager.com/gtag/js?id=G-Y7HGZFQH4E"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y7HGZFQH4E');</script><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>신주쿠 결전 시뮬레이터</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,6 +37,7 @@ h1 .g{color:var(--gojo)} h1 .s{color:var(--suku)} h1 .y{color:var(--yuta)} h1 .i
 .pick[aria-pressed="true"]{border-color:var(--c);box-shadow:0 0 0 1px var(--c) inset,0 0 30px rgba(255,255,255,.04)}
 .pick[aria-pressed="false"]{opacity:.78}
 .pick .nm{font:700 14px/1.25 var(--f-body);word-break:keep-all}
+.pick .en{display:block;font:500 10px/1.3 var(--f-mono);color:var(--mute);margin-top:3px;letter-spacing:.01em}
 .pick .jp{font:400 12px var(--f-mono);color:var(--mute)}
 .role{font:500 11px var(--f-mono);letter-spacing:.06em;padding:3px 10px;border-radius:99px;border:1px solid var(--line);color:var(--mute);background:var(--ink)}
 .pick[aria-pressed="true"] .role{color:#0b0d12;background:var(--c);border-color:var(--c)}
@@ -151,7 +152,6 @@ h1 .y0{color:var(--yuta0)}
 h1 .t{color:var(--toji)}
 .pick{padding:12px 3px 10px}
 .pick .nm{font-size:12px}
-.pick .en{font:500 9px/1.25 var(--f-mono);color:var(--mute);word-break:normal;overflow-wrap:anywhere;letter-spacing:-.02em}
 .pick .jp{font-size:10px}
 .pick .role{padding:2px 6px;font-size:10px}
 #foeSeg button{font-size:12px;padding:9px 2px;word-break:keep-all}
@@ -214,8 +214,10 @@ h1 .ma{color:var(--mahito)}
 :root{--ishi:#4aa8ff}
 :root{--jogo:#ff6a28}
 .pick[data-id="jogo"]{--c:var(--jogo)}
-.token.jogo{--tf:#8a3a22;background:linear-gradient(180deg,#e8501c 0 42%,#4a1a12 42% 100%)}
-.token.jogo::before{content:"";position:absolute;left:18%;right:18%;top:56%;height:4px;border-radius:2px;background:#ffd36a}
+/* 죠고: 푸른 기가 도는 창백한 피부 · 분화구가 뚫린 화산 머리 · 외눈 · 검은 이빨 · 귀마개 */
+.token.jogo{--tf:#b9c6de;background:#b9c6de;box-shadow:inset 0 -8px 12px rgba(40,50,90,.35)}
+.token.jogo::before{content:"";position:absolute;left:0;right:0;top:0;height:47%;clip-path:polygon(0 0,100% 0,100% 72%,86% 62%,70% 90%,50% 66%,30% 90%,14% 62%,0 72%);background:radial-gradient(ellipse 34% 22% at 50% 0,#ffe08a 0,#ff8a2a 48%,rgba(255,90,30,0) 100%),repeating-linear-gradient(112deg,transparent 0 11%,rgba(255,142,48,.9) 11% 13%,transparent 13% 27%),linear-gradient(180deg,#7c3a22,#35170f)}
+.token.jogo::after{content:"";position:absolute;left:0;right:0;top:0;bottom:0;background:radial-gradient(circle closest-side,#120a08 0 40%,#7a3a22 46% 92%,transparent 100%) 50% 60%/20% 20% no-repeat,radial-gradient(ellipse closest-side,#fbf4e8 0 86%,#2a1710 92% 97%,transparent 100%) 50% 58%/52% 34% no-repeat,linear-gradient(to top right,transparent 38%,#241410 42% 58%,transparent 62%) 27% 41%/25% 10% no-repeat,linear-gradient(to top left,transparent 38%,#241410 42% 58%,transparent 62%) 73% 41%/25% 10% no-repeat,repeating-linear-gradient(90deg,#14100c 0 6%,#b9c6de 6% 8%) 50% 89%/54% 15% no-repeat,radial-gradient(circle closest-side,#2e3346 0 42%,#8c97b3 48% 92%,transparent 100%) 3% 64%/17% 17% no-repeat,radial-gradient(circle closest-side,#2e3346 0 42%,#8c97b3 48% 92%,transparent 100%) 97% 64%/17% 17% no-repeat}
 .bars.jg{--c:var(--jogo);--ce:#ffb070}
 .go.jg{background:var(--jogo)}
 h1 .jg{color:var(--jogo)}
@@ -279,14 +281,6 @@ h1 .db{color:var(--dabura)}
         <h1><span class="g">고죠</span><span class="v">·</span><span class="s">스쿠나</span><span class="v">·</span><span class="y">유타</span><span class="v">·</span><span class="y0">0 유타</span><span class="v">·</span><span class="i">이타도리</span><span class="v">·</span><span class="t">토우지</span><span class="v">·</span><span class="gs">회옥 고죠</span><span class="v">·</span><span class="gk">회옥 게토</span><span class="v">·</span><span class="ge">게토</span><span class="v">·</span><span class="ha">하카리</span><span class="v">·</span><span class="na">나오야</span><span class="v">·</span><span class="ma">마히토</span><span class="v">·</span><span class="hi">히구루마</span><span class="v">·</span><span class="ig">이시고리</span><span class="v">·</span><span class="nm">나나미</span></h1>
         <p class="lead">신주쿠 결전 시점의 네 사람에 천여주박의 술사 킬러 토우지, 그리고 반전술식을 아직 쓰지 못하지만 죽음 직전에 각성하는 회옥 고죠, 성질이 다른 주령 여러 종을 번갈아 부리는 회옥 게토, 주술회전 0 시점의 게토 스구루와 옷코츠 유타, 영역 안의 슬롯으로 대박을 노리는 도박꾼 하카리 킨지, 죽으면 주령으로 되살아나는 젠인가의 속도광 젠인 나오야, 체력이 절반이 되면 변태해 편살즉영체가 되는 특급 주령 마히토, 법정을 펼쳐 상대의 죄를 심판하는 변호사 히구루마 히로미, 400년 만에 현대로 되살아나 주력 출력이 가장 높은 이시고리 류, 7:3의 약점을 만들어 내는 1급 술사 나나미 켄토를 더해, 원 하나로 줄인 1대1 대전입니다. 캐릭터를 고르면 상대가 자동으로 정해지고, 원하면 바꿀 수 있습니다. 직접 조종하는 대신 두 캐릭터의 AI 대결을 관전할 수도 있습니다. 수치는 원작 설정을 게임용으로 단순화한 값입니다.</p>
       </header>
-      <button type="button" id="singleMode" class="btn p" style="width:100%;padding:13px;font-weight:800">1인 모드 · AI와 대전</button>
-      <p style="margin:-3px 0 2px;color:var(--mute);font-size:12px">혼자 캐릭터를 조종해 AI 상대와 대전합니다. 아래에서 캐릭터와 난이도를 선택하세요.</p>
-      <section id="mpLobby" style="border:1px solid var(--line);border-radius:14px;padding:12px;background:var(--panel);display:grid;gap:9px">
-        <div style="font:700 14px var(--f-body)">온라인 대전 · 친구 초대</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button type="button" class="btn p" id="mpCreate">방 만들기</button><button type="button" class="btn" id="mpCopy" disabled>초대 링크 복사</button></div>
-        <div style="display:flex;gap:8px"><input id="mpCode" maxlength="6" placeholder="방 코드 6자리" autocomplete="off" style="min-width:0;flex:1;border:1px solid var(--line);border-radius:9px;background:var(--ink);color:var(--fg);padding:10px;text-transform:uppercase"><button type="button" class="btn" id="mpJoin">코드로 입장</button></div>
-        <div id="mpStatus" style="font-size:12px;color:var(--mute)">방을 만들거나 친구의 코드/초대 링크로 입장하세요. 온라인 대전은 서버 실행이 필요합니다.</div>
-      </section>
       <div class="duel" id="duel"></div>
       <div class="opt">
         <h2>플레이 방식</h2>
@@ -369,7 +363,7 @@ var CH={
 };
 CH.toji={id:'toji',name:'후시구로 토우지',short:'토우지',jp:'伏黒 甚爾',hp:1080,ce:0,regen:0,speed:300,pow:1.03,hpRegen:4,color:'#7bd88f',fill:'#d9a98a'};
 CH.toji.regenT='체력 +'+CH.toji.hpRegen;
-CH.gojos={id:'gojos',name:'회옥 고죠',hud:'회옥 고죠',short:'회옥 고죠',jp:'五条 悟 · 懐玉',hp:900,ce:360,regen:15,speed:235,color:'#8ab4ff',fill:'#f2f6ff',infCost:0.55,infUpkeep:2.0,infBreak:3.5,psDmg:170,awkAt:0.35,awkHp:0.09,awk:{infCost:0.3,infUpkeep:0,infBreak:2.5,maxce:390,regen:17,speed:248,ceFill:110,inv:1.4,cdCap:2,heal:54,purpleM:1.0}};
+CH.gojos={id:'gojos',name:'회옥 고죠',hud:'회옥 고죠',short:'회옥 고죠',jp:'五条 悟 · 懐玉',hp:900,ce:360,regen:15,speed:235,color:'#8ab4ff',fill:'#f2f6ff',infCost:0.55,infUpkeep:2.0,infBreak:3.5,psDmg:170,awkAt:0.35,awkHp:0.09,awk:{infCost:0.3,infUpkeep:0,infBreak:2.5,maxce:390,regen:17,speed:248,ceFill:110,inv:1.4,cdCap:2,heal:45,purpleM:1.0}};
 CH.geto={id:'geto',name:'게토 스구루',short:'게토',jp:'夏油 傑 · 呪術廻戦0',hp:1000,ce:480,regen:12,speed:262,color:'#b58cff',fill:'#e8d3bd'};
 CH.yuta0={id:'yuta0',name:'0 시점 유타',hud:'유타 (0)',short:'0 유타',jp:'乙骨 憂太 · 呪術廻戦0',hp:900,ce:460,regen:11,speed:250,color:'#ffb3d6',fill:'#eceaf2'};
 CH.getos={id:'getos',name:'회옥 게토',hud:'회옥 게토',short:'회옥 게토',jp:'夏油 傑 · 懐玉',hp:940,ce:400,regen:11,speed:258,color:'#8c7bff',fill:'#e8d3bd'};
@@ -392,11 +386,11 @@ var MG={
   grab:{cd:4.5,dmg:27,reach:92,kb:700,stun:0.3},
   leap:{cd:6,delay:0.6,r:125,dmg:48,spd:560},
   charge:{cd:5.5,dmg:35,spd:640,t:0.25,kb:520},
-  rec:{cd:12,t:1.5,hp:108},
+  rec:{cd:12,t:1.5,hp:90},
   flash:{cd:12,delay:0.9,r:150,dmg:66,kb:700},
   combo:{cd:6,n:3,gap:0.22,dmg:19,reach:100}
 };
-var MG_CURSE={sukuna:1,mahito:1,geto:1,getos:1,naoya:1};
+var MG_CURSE={sukuna:1,mahito:1,geto:1,getos:1,naoya:1,jogo:1};
 /* ---------- 소환수 공통: 체력이 있고 공격 대상으로 지정되는 소환체 ---------- */
 var SM_ST=new Proxy({},{get:function(){return 0},set:function(){return true}});
 function smWrap(z){
@@ -574,7 +568,7 @@ function smBar(z){
   var r=z.hr||z.r;if(r>60)r=60;
   ctx.save();ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(z.x-20,z.y-r-14,40,4);ctx.fillStyle='#ffd0ff';ctx.fillRect(z.x-20,z.y-r-14,40*Math.max(0,z.hp/z.maxhp),4);ctx.restore();
 }
-var YRC_T={mahito:1,naoya:1};
+var YRC_T={mahito:1,naoya:1,jogo:1};
 var YRC={yuta:{r:140,d:70},yuta0:{r:125,d:55}};
 function yuRct(f){
   var c=YRC[f.id],o=other(f),n=0,cr=c.r+30;
@@ -597,7 +591,7 @@ var FUGA_DUST={dmg:1.5,r:185,edge:0.65,burn:5,rBase:110,burnBase:3}; /* 증가�
 CH.nanami={id:'nanami',name:'나나미 켄토',short:'나나미',jp:'七海 建人 · 十劃呪法',hp:1000,ce:340,regen:9,speed:250,color:'#e0b44c',fill:'#e6c9a2',ceT:'340 → 시간 외 420',regenT:'9 → 시간 외 11'};
 CH.mahito={id:'mahito',name:'마히토',short:'마히토',jp:'真人 · 無為転変',hp:900,ce:390,regen:10,speed:255,color:'#5fd0c4',fill:'#c9d3d8',hpT:'900',ceT:'390 → 450',regenT:'10 → 12',speedT:'255 → 245'};
 CH.ishigori={id:'ishigori',name:'이시고리 류',short:'이시고리',jp:'石流 龍 · Granité Blast',hp:1050,ce:400,regen:12,speed:240,pow:1.05,color:'#4aa8ff',fill:'#e2b48a'};
-CH.jogo={id:'jogo',name:'죠고',short:'죠고',jp:'漏瑚 · 火山の呪霊',hp:1000,ce:520,regen:11,speed:250,pow:1.04,color:'#ff6a28',fill:'#8a3a22'};
+CH.jogo={id:'jogo',name:'죠고',short:'죠고',jp:'漏瑚 · 大地の畏れ',hp:1000,ce:520,regen:11,speed:250,pow:1.04,color:'#ff6a28',fill:'#b9c6de'};
 var DIFF={
   easy:{label:'쉬움',react:0.6,lead:0.1,aggr:0.55,dodge:0.3},
   normal:{label:'보통',react:0.36,lead:0.4,aggr:0.8,dodge:0.62},
@@ -641,8 +635,8 @@ BTN_LABEL.mahito=['변형 연격','무위전변','발체','기혼 이성체','�
 BTN_COLOR.mahito=['#e6eaf0','#5fd0c4','#d98fc8','#9fc4d8','#5fe3a1','#e8ecf4','#7be0d6','#b8c6d8'];
 BTN_LABEL.mahitoC=['편살 연타','혼 접촉','경질 돌진','발체 극','재형성','흑섬','찰나 전개','전신 가시'];
 BTN_COLOR.mahitoC=['#e6eaf0','#5fd0c4','#ffb347','#d98fc8','#5fe3a1','#e8ecf4','#7be0d6','#c0cbe0'];
-BTN_LABEL.jogo=['화염 연격','화산탄','회군비충','분화','화염 돌진','극번 「운」','영역전개'];
-BTN_COLOR.jogo=['#ffd9b0','#ff8a3c','#ffb070','#ff6a28','#ffcf5e','#ff5a1c','#ff6a28'];
+BTN_LABEL.jogo=['화염 연격','화산탄','화력충','분화','화염 돌진','극번 「운」','영역전개','영역전연'];
+BTN_COLOR.jogo=['#ffd9b0','#ff8a3c','#ffb070','#ff6a28','#ffcf5e','#ff5a1c','#ff6a28','#ffe3c0'];
 BTN_LABEL.ishigori=['근접 격투','그라니테','소탄 연사','출력 최대','손으로 막기','고지 포격','영역전개'];
 BTN_COLOR.ishigori=['#f1e6d2','#4aa8ff','#8cc8ff','#ffe45e','#d6dde8','#7ad0ff','#4aa8ff'];
 function effCost(id,b){return Math.round(b*((id==='gojo'||id==='gojos')?0.8:1))}
@@ -683,7 +677,7 @@ gojo:{
    '상대 방향으로 160 돌진하고, 닿으면 피해 70. 20% 확률로 흑섬이 터져 피해 ×2.5(175)와 강한 넉백.',
    '흑섬이 터지면 "존" 12초: 모든 피해 ×1.3, 주력 회복 ×1.5, 흑섬 확률 55%.',
    '스쿠나의 무하한 같은 방어는 없지만, 돌진이 빗나가면 쿨타임만 소모됩니다.']},
-  {name:'반전술식',jp:'反転術式 · Reverse Cursed Technique',tag:'반전',sum:'2초에 걸쳐 체력 204 회복.',lines:[
+  {name:'반전술식',jp:'反転術式 · Reverse Cursed Technique',tag:'반전',sum:'2초에 걸쳐 체력 170 회복.',lines:[
    '회복하는 동안 이동 속도가 40% 줄어듭니다.',
    '회복은 기절해도 이어집니다. 체력이 낮을 때 영역 증폭 전에 먼저 눌러 두면 안전합니다.']},
   {name:'영역 증폭',jp:'領域展延 · Domain Amplification',tag:'방어',sum:'영역의 필중 효과를 막는 주력 방어.',lines:[
@@ -725,7 +719,7 @@ sukuna:{
    '상대 방향으로 160 돌진하고, 닿으면 피해 70. 20% 확률로 흑섬이 터져 피해 ×2.5(175)와 강한 넉백.',
    '흑섬이 터지면 "존" 12초: 모든 피해 ×1.3, 주력 회복 ×1.5, 흑섬 확률 55%.',
    '고죠에게는 무하한에 막힐 수 있습니다. 무하한이 꺼진 틈을 노리세요.']},
-  {name:'반전술식',jp:'反転術式 · Reverse Cursed Technique',tag:'반전',sum:'2초에 걸쳐 체력 180 회복.',lines:[
+  {name:'반전술식',jp:'反転術式 · Reverse Cursed Technique',tag:'반전',sum:'2초에 걸쳐 체력 150 회복.',lines:[
    '회복하는 동안 이동 속도가 40% 줄어듭니다.',
    '고죠보다 쿨타임이 짧아 교전 중 여러 번 쓸 수 있습니다.']},
   {name:'간이 영역',jp:'簡易領域 · Simple Domain',tag:'방어',sum:'영역의 필중 효과를 막는 간이 결계.',lines:[
@@ -772,7 +766,7 @@ yuta:{
    '0.8초 시전합니다. 마지막 0.3초 전에 조준선이 고정되어 표시됩니다(선 폭 약 76).',
    '고정된 선 위에 있는 상대에게 피해 170과 강한 넉백. 무하한에는 막히지만, 리카의 주력이 무하한을 압박해 막는 데 주력 92가 듭니다(일반 공격의 1.8배).',
    '극장판 「주술회전 0」의 장면을 게임용으로 옮겼습니다.']},
-  {name:'반전술식',jp:'反転術式 · Reverse Cursed Technique',tag:'반전',sum:'2초에 걸쳐 체력 192 회복.',lines:[
+  {name:'반전술식',jp:'反転術式 · Reverse Cursed Technique',tag:'반전',sum:'2초에 걸쳐 체력 160 회복.',lines:[
    '회복하는 동안 이동 속도가 40% 줄어듭니다.',
    '반전술식을 쓰는 순간 반경 140 안의 주령 상대(마히토·나오야)에게 피해 70을 주고 밀어냅니다. 게토는 본체가 아니라 그가 소환한 주령(주령 방출·주령 방벽, 극번 제외)이 범위 안에 있을 때만 정화되며, 그만큼 게토가 피해 70을 입습니다. 일도(사거리 165, 피해 44)보다 범위는 좁고 피해는 더 큽니다.',
    '주력이 넉넉해서 위험할 때 바로 쓸 수 있습니다. 체력이 낮아지면 먼저 누르세요.']},
@@ -827,7 +821,7 @@ itadori:{
   {name:'천혈',jp:'穿血 · Piercing Blood',tag:'술식',sum:'극한까지 압축한 피를 손끝에서 쏘는 기술.',lines:[
    '0.9초 시전(이동 70% 감소) 뒤 전방 300을 꿰뚫습니다. 사거리 240 안에서만 시작할 수 있고, 선 위에 있으면 피해 150과 강한 넉백.',
    '원작에서는 수렴을 능숙하게 못 해 쵸소가 준 피 구슬로 근거리에서 쐈습니다. 그래서 사거리를 짧게 잡았습니다.']},
-  {name:'반전술식',jp:'反転術式 · Reverse Cursed Technique',tag:'반전',sum:'2초에 걸쳐 체력 168 회복.',lines:[
+  {name:'반전술식',jp:'反転術式 · Reverse Cursed Technique',tag:'반전',sum:'2초에 걸쳐 체력 140 회복.',lines:[
    '회복하는 동안 이동 속도가 40% 줄어듭니다.',
    '결전 직전에 독학으로 익힌 기술이라 회복량이 네 사람 중 가장 적습니다.']},
   {name:'간이 영역',jp:'簡易領域 · Simple Domain',tag:'방어',sum:'스쿠나의 영역에 맞서 쓴 간이 결계.',lines:[
@@ -900,7 +894,7 @@ DOCS.gojos={
    '체력 900, 주력 총량 360, 초당 회복 15입니다. 기존 고죠(1000 / 400 / 16)보다 체력·주력 총량·회복이 모두 낮습니다. 아직 육안과 무하한을 다 다루지 못하는 시기라는 점을 반영했습니다(게임용 보정). 각성하면 일부 수치가 오릅니다.']},
   {name:'각성',jp:'覚醒 · Awakening',tag:'패시브',sum:'죽음 직전에 반전술식을 터득하는 원작 장면을 옮긴 1회성 각성.',lines:[
    '체력이 35% 이하가 되거나 치명상을 입는 순간 각성합니다. 치명상이면 체력 1로 버티고 각성합니다(1회). 각성 전에는 회복 수단이 없고, 붉은·자·반전 버튼이 잠겨 있습니다.',
-   '각성 연출 1.4초 동안은 무적이며, 체력이 최소 9%까지 오르고 2초간 약 108 회복합니다. 주력 +110, 쿨타임은 모두 2초 이하로 줄어듭니다. 일시적 회복불가도 풀립니다.',
+   '각성 연출 1.4초 동안은 무적이며, 체력이 최소 9%까지 오르고 2초간 약 90 회복합니다. 주력 +110, 쿨타임은 모두 2초 이하로 줄어듭니다. 일시적 회복불가도 풀립니다.',
    '무하한이 안정됩니다: 막는 데 드는 주력 55% → 30%, 유지 주력 초당 2 → 0, 깨진 뒤 꺼지는 시간 3.5초 → 2.5초.',
    '주력 총량 360 → 390, 초당 회복 15 → 17, 이동 235 → 248이 되고 눈이 빛납니다. 원작에서 토우지에게 죽을 뻔한 뒤 반전술식·붉은·자·무하한의 상시 전개를 얻은 흐름입니다.',
    '영역전개·영역 증폭·무하한 이동은 이 시기 작중에서 확인되는 장면이 없어 각성 후에도 없습니다.']}
@@ -923,8 +917,8 @@ DOCS.gojos={
    '누를 때마다 무하한을 끄거나 다시 켭니다. 꺼 두면 아무것도 막지 못하는 대신 유지 주력(초당 2)과 막는 데 드는 주력이 들지 않습니다.',
    '푸른과 출력 최대 푸른에 주력을 몰아 쓸 때, 또는 상대 투사체가 멀리 있을 때 쓰세요. 천역모에 맞아 강제로 꺼진 4초는 이 버튼과 별개입니다.',
    '무하한을 쉬지 않고 유지하게 된 것이 이 시기 이후라는 설정을 옮긴 게임용 규칙입니다. 각성 후에는 유지 주력이 들지 않습니다.']},
-  {name:'반전술식',jp:'反転術式 · Reverse Cursed Technique',tag:'각성',sum:'2초에 걸쳐 체력 192 회복.',lines:[
-   '각성해야 쓸 수 있습니다. 쓰는 동안 이동 속도가 40% 줄어듭니다. 기존 고죠(204)보다 약간 적은 회복량입니다.']},
+  {name:'반전술식',jp:'反転術式 · Reverse Cursed Technique',tag:'각성',sum:'2초에 걸쳐 체력 160 회복.',lines:[
+   '각성해야 쓸 수 있습니다. 쓰는 동안 이동 속도가 40% 줄어듭니다. 기존 고죠(170)보다 약간 적은 회복량입니다.']},
   {name:'술식반전 「붉은」',jp:'赫 · Red',tag:'각성',sum:'각성 후 쓸 수 있는 밀어내는 고속탄.',lines:[
    '기존 고죠의 붉은과 같은 탄으로, 피해 85입니다. 각성해야 쓸 수 있습니다.',
    '원작에서 붉은은 반전술식을 터득한 직후 처음 쓰였습니다.']},
@@ -935,39 +929,49 @@ DOCS.gojos={
 };
 DOCS.jogo={
  passives:[
-  {name:'특급주령 · 대지의 공포',jp:'特級呪霊 · 漏瑚',tag:'패시브',sum:'화산과 대지에 대한 인간의 공포에서 태어난 특급주령.',lines:[
+  {name:'특급주령 · 대지의 두려움',jp:'特級呪霊 · 漏瑚',tag:'패시브',sum:'대지(화산)에 대한 인간의 두려움에서 태어난 특급주령.',lines:[
    '체력 1000, 주력 520, 초당 회복 11, 이동 250입니다. 모든 피해에 ×1.04가 붙습니다(게임용 수치). 반전술식은 쓰지 않아 회복 수단이 없습니다.',
-   '원작의 죠고는 인간이 대지(화산)에 품은 공포에서 태어난 특급주령으로, 화산 모양의 머리와 머리 위의 불꽃이 특징입니다. 이를 큰 주력 풀과 화염 중심 기술로 옮겼습니다.',
-   '화산탄·회군비충·분화·극번 「운」·영역전개는 술식이라 번아웃 중에는 쓸 수 없습니다. 화염 연격과 화염 돌진은 번아웃과 무관합니다.']},
-  {name:'화상',jp:'火 · Burn',tag:'패시브',sum:'죠고의 공격은 닿은 상대를 불태운다.',lines:[
-   '죠고의 모든 공격이 적중하면 화상 지속시간이 붙습니다(기본기 1.2~2.5초, 화산탄·회군비충 2초, 분화 3초, 극번 4초).',
-   '화염을 다루는 죠고의 술식 특성을 옮긴 규칙입니다. 화상의 지속 피해량은 게임의 기존 화상 규칙을 따릅니다.']},
-  {name:'분노의 분화',jp:'激昂 · Eruption of Rage',tag:'패시브',sum:'궁지에 몰릴수록 불꽃이 거세진다.',lines:[
-   '체력이 40% 미만이면 주는 피해가 ×1.12가 됩니다(게임용 규칙).',
-   '원작에서 죠고는 고죠 사토루에게 몰리면서도 마지막까지 극번과 영역으로 맞서며 물러서지 않았습니다. 그 기세를 저체력 강화로 옮겼습니다.']}
+   '원작의 죠고는 인간이 대지에 품은 두려움에서 태어난 특급주령입니다. 분화구가 뚫린 화산 모양의 머리, 외눈, 검게 칠한 이빨, 머리 옆의 귀마개 같은 장식이 특징이고, 인간을 증오하며 "우리야말로 진정한 인간"이라고 주장합니다. 선택 화면과 전투 화면의 모습을 이 특징에 맞춰 다시 그렸습니다.',
+   '화산탄·화력충·분화·극번 「운」·영역전개는 술식이라 번아웃 중과 영역전연 중에는 쓸 수 없습니다. 화염 연격·화염 돌진·영역전연은 번아웃과 무관합니다.']},
+  {name:'화상',jp:'火 · Burn',tag:'패시브',sum:'죠고의 불꽃에 닿은 상대는 불탄다.',lines:[
+   '화염 연격(1.2~2.5초), 화산탄(4초), 화력충(2초), 분화(3초), 화염 돌진(2초), 극번 「운」(4초)이 적중하면 화상이 붙습니다. 화상의 지속 피해량은 게임의 기존 화상 규칙(초당 12)을 따릅니다.',
+   '영역전연 중에는 화염을 쓰지 못하므로 화염 연격과 화염 돌진에 화상이 붙지 않습니다.']},
+  {name:'분노의 분화',jp:'激昂 · Eruption of Rage',tag:'패시브',sum:'궁지에 몰릴수록 분화구의 불꽃이 거세진다.',lines:[
+   '체력이 40% 미만이면 주는 피해가 ×1.12가 됩니다(게임용 규칙). 머리 위 분화구의 불꽃이 커지고 분출 연출과 대사가 나옵니다.',
+   '고죠 사토루에게 "너, 약하잖아"라는 말을 듣고 격분하는 장면을 비롯해, 몰릴수록 더 거칠게 타오르는 죠고의 성격을 저체력 강화로 옮겼습니다.']}
  ],
  actives:[
   {name:'화염 연격',jp:'火炎 · Flame Strikes',tag:'체술',sum:'불붙은 주먹으로 이어 치는 3연타.',lines:[
-   '사거리 135~150 안에서 30 · 30 · 52의 3연타(합계 112). 마지막 타는 강하게 밀어내며 0.2초 기절을 줍니다.',
-   '주력을 쓰지 않는 기본기이고 쿨타임 1.5초입니다. 맞은 상대는 화상을 입습니다.']},
+   '사거리 135~150 안에서 30 · 30 · 52의 3연타(합계 112). 마지막 타는 강하게 밀어내며 0.2초 기절을 줍니다. 맞은 상대는 화상을 입습니다.',
+   '주력을 쓰지 않는 기본기이고 쿨타임 1.5초입니다. 영역전연 중에는 쿨타임이 1.2초로 줄지만 화상은 붙지 않습니다.']},
   {name:'화산탄',jp:'火山弾 · Volcanic Bomb',tag:'술식',sum:'녹은 암석 덩어리 같은 불덩이를 던진다.',lines:[
-   '0.3초 겨눈 뒤 반경 34, 속도 700의 불덩이를 쏩니다. 피해 115, 넉백과 화상 4초.',
-   '주력 34, 쿨타임 4.5초. 죠고의 가장 기본적인 원거리 견제기입니다.']},
-  {name:'회군비충',jp:'灰軍飛虫 · Ember Insects',tag:'술식',sum:'불씨로 된 작은 벌레 떼를 한꺼번에 날린다.',lines:[
-   '0.06초 간격으로 7발의 작은 불씨를 부채꼴로 쏩니다. 발당 피해 22(전부 맞으면 154), 화상 2초.',
-   '주력 30, 쿨타임 7초. 원작에서 죠고가 고죠에게 쓴 벌레 형태의 화염 술식을 옮겼습니다.']},
-  {name:'분화',jp:'噴火 · Eruption',tag:'술식',sum:'상대의 발밑에서 용암을 터뜨린다.',lines:[
-   '상대 위치에 0.7초 동안 경고 원(반경 135)이 뜬 뒤 폭발합니다. 피해 150, 0.5초 기절, 화상 3초.',
-   '주력 45, 쿨타임 9초. 경고 원 밖으로 벗어나면 피할 수 있습니다.']},
+   '0.3초 겨눈 뒤 반경 34, 속도 700의 불덩이를 쏩니다. 피해 115, 넉백과 화상 4초. 날아가는 동안 검은 바위에 용암의 균열이 비치는 모습으로 그려집니다.',
+   '주력 34, 쿨타임 4.5초. 죠고의 기본 원거리 견제기입니다. 고죠의 무하한에는 막힙니다. 불덩이와 용암을 던지는 죠고의 모습을 옮긴 기술이며, 기술명은 게임용 표기입니다.']},
+  {name:'화력충',jp:'火礫蟲 · Ember Insects',tag:'술식',sum:'분화구에서 날개 달린 불씨 벌레 떼를 풀어 추격시킨다.',lines:[
+   '정수리 분화구에서 0.08초 간격으로 6마리를 부채꼴로 날립니다. 벌레는 상대를 쫓아 선회하며(속도 420), 2.4초 안에 닿지 않으면 사라집니다.',
+   '닿으면 "끼이익" 소리를 낸 뒤 0.2초 뒤에 폭발합니다: 반경 62, 피해 22(6마리가 모두 터지면 132), 화상 2초와 약한 넉백.',
+   '주력 32, 쿨타임 7.5초. 원작에서도 이 벌레는 고죠의 무하한에 막혀 닿지 못했습니다. 게임에서도 무하한에 막힙니다.']},
+  {name:'분화',jp:'噴火 · Eruption',tag:'술식',sum:'상대의 발밑에 작은 화산을 솟게 해 터뜨린다.',lines:[
+   '상대 위치에 0.7초 동안 경고 원(반경 135)이 뜨고 작은 화산이 솟아오른 뒤 폭발합니다. 피해 150, 0.5초 기절, 화상 3초.',
+   '주력 45, 쿨타임 9초. 경고 원 밖으로 벗어나면 피할 수 있습니다. 원작의 죠고는 지면에서 작은 화산을 솟구치게 해 지뢰처럼 터뜨렸습니다.']},
   {name:'화염 돌진',jp:'火炎飛行 · Flame Dash',tag:'이동',sum:'불꽃을 뿜어 순식간에 거리를 좁힌다.',lines:[
-   '상대 방향으로 빠르게 날아가며, 0.2초 뒤 가까이 있으면 피해 90과 화상 2초를 줍니다.',
-   '주력 18, 쿨타임 6초. 원작의 죠고는 불꽃으로 몸을 띄워 빠르게 움직였습니다.']},
-  {name:'극번 「운」',jp:'極ノ番「隕」 · Maximum: Meteor',tag:'술식',sum:'거대한 운석을 불러 내려찍는 죠고의 필살 술식.',lines:[
-   '1.0초 기를 모은 뒤 상대 위치에 반경 200의 경고 원이 1.1초간 뜨고, 이후 운석이 떨어집니다. 피해 330, 강한 넉백, 0.4초 기절, 화상 4초.',
-   '주력 110, 쿨타임 26초. 원작에서 고죠 사토루와의 전투에서 쓴 대표 술식입니다.']},
-  {name:'영역전개 「개관철위산」',jp:'領域展開 蓋棺鉄囲山 · Coffin of the Iron Mountain',tag:'영역',sum:'화산 속에 가두고 열기로 태우는 영역.',lines:[
-   '반경 320의 영역 안에 있는 상대는 0.5초마다 피해와 화상을 입고, 6틱마다 분화가 터져 70 추가 피해와 넉백을 받습니다. 시간이 갈수록 틱 피해가 커집니다.',
-   '주력 120, 쿨타임 55초. 영역끼리 부딪히면 주력이 많은 쪽이 이깁니다. 원작에서 죠고가 고죠에게 펼친 영역입니다.']}
+   '상대 방향으로 빠르게 날아가며, 0.2초 뒤 가까이 있으면 피해 90과 화상 2초를 줍니다. 술식이 아니라 번아웃 중에도 쓸 수 있습니다.',
+   '주력 18, 쿨타임 6초. 영역전연 중에는 "전연 돌진"이 되어 화상 없이 피해 90만 줍니다. 원작의 죠고는 불꽃으로 몸을 띄워 빠르게 움직였습니다.']},
+  {name:'극번 「운」',jp:'極ノ番「隕」 · Maximum: Meteor',tag:'술식',sum:'거대한 불덩이 운석을 떨어뜨리는 죠고의 필살 술식.',lines:[
+   '1.0초 동안 기를 모은 뒤(그동안 이동이 느려지고 머리 위 불덩이가 커집니다) 상대 위치에 반경 200의 경고 원이 1.1초간 뜨고, 하늘에서 운석이 떨어집니다. 피해 330, 강한 넉백, 0.4초 기절, 화상 4초. 땅에는 그을린 크레이터가 남습니다.',
+   '주력 110, 쿨타임 26초. 경고 원 밖으로 벗어나면 피할 수 있습니다. 원작에서도 스쿠나는 이 운석을 쉽게 피했고, 운석은 시부야 일부를 파괴했습니다. 대도시전에서는 반경 220 안의 건물을 크게 부숩니다.',
+   '영역 안에서의 규칙: 자신의 개관철위산이 완성된 뒤 영역 효과 무효 상태가 아닌 상대에게 쓰면 기를 모으는 시간이 0.55초, 경고 시간이 0.6초로 줄고 낙하 지점이 상대를 따라다녀 사실상 필중이 됩니다. 운석과 필중 영역을 짝지어 쓰는 해석을 옮긴 게임용 규칙입니다.']},
+  {name:'영역전개 「개관철위산」',jp:'領域展開 蓋棺鉄囲山 · Coffin of the Iron Mountain',tag:'영역',sum:'화산의 내부에 상대를 가두고 극한의 열기로 태우는 영역.',lines:[
+   '1.0초 동안 반경 320까지 확장하고 해제하기 전까지 유지됩니다(주력 120, 쿨타임 55초). 완성 뒤 안에 있는 상대는 0.5초마다 필중 열기를 맞습니다: 9에서 시작해 시간이 갈수록 늘어나(최대 21) 화상 2초가 붙고, 6번째 틱마다 용암이 분출해 70이 더해지며 넉백을 받습니다.',
+   '영역 안에서는 죠고의 극번 「운」이 필중이 됩니다(위 극번 항목). 영역 증폭·간이 영역·영역전연은 필중 열기를 막습니다.',
+   '영역 충돌이 나면 주력이 많은 쪽이 이기지만 스쿠나의 영역은 주력이 2배로 취급됩니다. 종료 후 2.5초 동안 술식 번아웃.',
+   '원작에서 죠고는 고죠 사토루와의 첫 대결에서 이 영역을 펼쳤지만 무량공처에 덮어씌워져 무너졌고, 이어 목이 뜯기는 패배를 당했습니다. 전개할 때의 외침은 "재조차 남기지 않겠다"는 취지의 의역입니다.',
+   '영역 유지: 전개를 끝낸 뒤에는 영역 버튼을 다시 누를 때까지(또는 주력이 바닥날 때까지) 이어지며, 유지하는 동안 초당 36의 주력이 더 듭니다. 해제하거나 주력이 바닥나면 술식 번아웃 2.5초가 붙고, AI는 기존 유지 시간(8초)에 3초를 더한 뒤 스스로 거둡니다. 결계로 닫힌 영역이라, 전개가 끝날 때 안에 있던 상대와 영역을 편 본인은 영역 밖으로 나갈 수 없습니다(영역 면역인 토우지는 상대로서는 제외).',
+   '영역 충돌: 상대도 영역을 펼치면 두 영역이 모두 펼쳐진 뒤 3초 동안 서로의 영역 효과(피해·기절·감속·가두기·영역 강화)가 상쇄되어 멈춥니다. 3초가 지나면 주력이 적은 쪽의 영역이 붕괴합니다(붕괴한 쪽은 0.8초 기절, 술식 번아웃 1.5초, 주력 -20). 스쿠나의 영역은 비교할 때 주력이 2배로 취급됩니다. 충돌 중에도 영역 유지 주력은 계속 들며, 영역 버튼을 눌러 스스로 거둘 수도 있습니다.']},
+  {name:'영역전연',jp:'領域展延 · Domain Amplification',tag:'방어',sum:'영역을 몸에 두르는 방어 기술. 고죠의 무하한까지 중화한다.',lines:[
+   '4초 동안 영역 효과를 받지 않고(필중 영역·간이 영역 상쇄), 받는 피해가 ×0.7이 됩니다. 주력 40, 쿨타임 20초. 술식이 아니므로 번아웃 중에도 쓸 수 있습니다.',
+   '영역전연 중에는 죠고의 공격이 고죠의 무하한을 뚫습니다. 대신 술식을 쓸 수 없어 화염 연격(쿨타임 1.2초)과 화염 돌진만 쓸 수 있고, 화상은 붙지 않습니다.',
+   '원작에서 죠고는 시부야에서 하나미와 함께 영역전연으로 고죠의 무하한을 뚫고 타격을 넣으려 했지만 고죠를 쓰러뜨리지는 못했습니다. 영역전연 중에는 생득술식을 쓸 수 없다는 제약도 그대로 옮겼습니다.']}
  ]
 };
 DOCS.ishigori={
@@ -1122,7 +1126,7 @@ DOCS.yuta0={
    '원작에서 복사는 리카가 상대의 몸 일부를 삼켜야 성립하는 술식으로 소개되는데, 게임에서는 기록 조건을 따로 두지 않았습니다.']},
   {name:'신주쿠 시점 유타와의 차이',jp:'比較 · Differences from Shinjuku Yuta',tag:'패시브',sum:'폭은 좁고, 리카에 기대는 비중은 크다.',lines:[
    '없는 것: 모방, 공간 왜곡, 영역전개. 있는 것: 「죽어라」(투사체·주령 소거), 「순애빔」(체력 450 이하 처형).',
-   '약해진 것: 일도(1타 44 → 2타 28+28, 사거리 165 → 150), 리카의 손(피해 90 → 72, 반경 70 → 62, 예고 0.45초 → 0.35초, 쿨타임 6 → 4.5초로 더 자주), 멈춰라(사거리 380 → 340, 최대 1.2초 → 1.0초, 반동 15 → 18), 리카 빔(피해 170 → 120, 폭 76 → 56, 시전 0.8 → 0.55초, 쿨타임 16 → 12초), 반전(2초에 192 → 132 회복).',
+   '약해진 것: 일도(1타 44 → 2타 28+28, 사거리 165 → 150), 리카의 손(피해 90 → 72, 반경 70 → 62, 예고 0.45초 → 0.35초, 쿨타임 6 → 4.5초로 더 자주), 멈춰라(사거리 380 → 340, 최대 1.2초 → 1.0초, 반동 15 → 18), 리카 빔(피해 170 → 120, 폭 76 → 56, 시전 0.8 → 0.55초, 쿨타임 16 → 12초), 반전(2초에 160 → 110 회복).',
    '리카 완전 현현은 버튼이 없는 패시브로 바뀌어 전투 시작부터 계속 유지됩니다(신주쿠 시점은 8초짜리 기술). 대신 눈에 보이는 큰 모습으로 곁에서 함께 싸우는 방식이고, 주는 피해 +10%·받는 피해 -15%로 보정치는 낮습니다(신주쿠 시점 +20%·-25%). 신주쿠 시점의 리카는 지속 시간이 짧은 대신 조금 더 자주(1.7초, 0 시점은 1.8초) 더 넓고(반경 100·140) 강하게(피해 66·105) 내려치고, 세 번째 공격에는 0.4초 기절이 붙습니다.',
    '디자인도 다릅니다: 흰 교복에 둥근 눈, 짙은 다크서클, 리카의 반지를 상징하는 분홍 포인트입니다.']}
  ],
@@ -1147,8 +1151,8 @@ DOCS.yuta0={
    '0.55초 시전합니다. 마지막 0.3초 전에 조준선이 고정되어 표시됩니다(선 폭 56, 길이 1300).',
    '고정된 선 위에 있는 상대에게 피해 120과 강한 넉백. 주력 40, 쿨타임 12초. 신주쿠 시점 유타의 리카 빔(피해 170, 폭 76, 시전 0.8초)보다 가늘고 약하지만 시전이 빠릅니다. 리카가 떠난 뒤에는 쓸 수 없습니다.',
    '극장판 0에서 리카가 주력을 쏘아 내는 장면을 게임용으로 옮겼습니다.']},
-  {name:'반전술식',jp:'反転術式 · Reverse Cursed Technique',tag:'반전',sum:'2초에 걸쳐 체력 132 회복.',lines:[
-   '주력 28, 쿨타임 10초. 신주쿠 시점 유타(2초에 192 회복)보다 회복량이 적습니다.',
+  {name:'반전술식',jp:'反転術式 · Reverse Cursed Technique',tag:'반전',sum:'2초에 걸쳐 체력 110 회복.',lines:[
+   '주력 28, 쿨타임 10초. 신주쿠 시점 유타(2초에 160 회복)보다 회복량이 적습니다.',
    '반전술식을 쓰는 순간 반경 125 안의 주령 상대(마히토·나오야)에게 피해 55를 주고 밀어냅니다. 회옥 게토를 포함한 게토는 본체가 아니라 그가 소환한 주령(주령 방출·주령 방벽·데스웜, 극번 제외)이 범위 안에 있을 때만 정화되며, 그만큼 게토가 피해 55를 입습니다. 일도(사거리 150, 합계 56)보다 범위는 좁고 피해는 비슷합니다. 신주쿠 시점 유타(피해 70)보다는 약합니다.',
    '고전에 들어와 1년이 안 되는 사이에 반전술식을 익혔다는 설정은 게임에 반영했지만, 아직 숙련되지 않은 시기라 회복량을 낮췄습니다.']},
   {name:'순애빔 (처형)',jp:'純愛 · Pure Love Beam',tag:'리카',sum:'상대 체력이 450 이하일 때만 쓸 수 있는 리카의 필살 빔. 쏘고 나면 리카가 사라진다.',lines:[
@@ -1166,7 +1170,7 @@ DOCS.hakari={
    '평소에 반전술식을 쓰는 장면은 없어서 넣지 않았습니다. 체력은 회복되지 않으며, 대박 상태에서만 몸이 알아서 낫습니다.']},
   {name:'대박',jp:'ジャックポット · Jackpot',tag:'패시브',sum:'영역에서 777이 뜨면 얻는, 시간제한 불사에 가까운 상태.',lines:[
    '영역 「좌살박도」에서 당첨되면 12초 동안 대박 상태가 됩니다. 주력이 항상 가득 차고, 모든 기술의 주력 소모가 0이 됩니다.',
-   '대박 중에는 입은 피해를 초당 86.4씩 몸이 자동 반전술식으로 회복합니다. 모든 피해 ×1.2, 쿨타임 1.6배 빠르게, 이동 +15%이며, 올인은 항상 이기고 파칭코 구슬은 7발이 됩니다.',
+   '대박 중에는 입은 피해를 초당 72씩 몸이 자동 반전술식으로 회복합니다. 모든 피해 ×1.2, 쿨타임 1.6배 빠르게, 이동 +15%이며, 올인은 항상 이기고 파칭코 구슬은 7발이 됩니다.',
    '토우지의 석혼도에 맞아 회복 불능이 걸린 동안에는 자동 회복도 멈춥니다.',
    '원작의 대박은 4분 11초 동안 주력이 무한해지고, 다친 몸이 자동으로 치유됩니다. 전투 시간에 맞춰 12초로 줄이고 회복량을 정한 것은 게임용 규칙입니다. 끝날 때 따로 페널티는 없습니다.']}
  ],
@@ -1195,7 +1199,7 @@ DOCS.hakari={
    '1.0초 동안 반경 300까지 확장되어 해제하기 전까지 유지됩니다. 완성 시점에 안에 있는 상대는 뇌가 멈춰 1.0초 기절하고, 이후에는 이동 속도가 35% 줄며 회전마다 5 피해를 받습니다.',
    '0.18초마다 슬롯이 한 번 돕니다. 당첨 확률은 돌릴수록 올라 30번째에 확정입니다(리치 중 18번째). 당첨되면 영역이 풀리고 대박 상태가 됩니다. 상대가 영역 밖에 있거나 효과를 막아도 슬롯은 계속 돕니다.',
    '영역 증폭·간이 영역은 기절·감속·피해를 막지만 슬롯은 막지 못합니다. 영역 충돌이 나면 주력이 많은 쪽이 이기지만 스쿠나의 영역은 주력이 2배로 취급되며, 지면 영역이 무너져 당첨 기회를 잃습니다.',
-   '대박이 끝나기 4초 전부터 다시 펼칠 수 있습니다. 이때 또 당첨되면 대박이 최소 9초로 갱신되고 체력 300을 회복합니다. 첫 당첨 뒤 쿨타임은 8초, 연속 당첨 뒤에는 40초입니다.',
+   '대박이 끝나기 4초 전부터 다시 펼칠 수 있습니다. 이때 또 당첨되면 대박이 최소 9초로 갱신되고 체력 250을 회복합니다. 첫 당첨 뒤 쿨타임은 8초, 연속 당첨 뒤에는 40초입니다.',
    '원작의 영역은 규칙을 상대의 뇌에 새겨 잠시 멈추게 하고, 30번 안에 당첨이 나오도록 되어 있습니다. 슬롯 확률과 위 수치는 게임용으로 정한 값입니다.','영역 유지: 전개를 끝낸 뒤에는 영역 버튼을 다시 누를 때까지(또는 주력이 바닥날 때까지) 이어지며, 유지하는 동안 초당 45의 주력이 더 듭니다. 해제하거나 주력이 바닥나면 술식 번아웃 2.5초가 붙고, AI는 기존 유지 시간(6~9초)에 3초를 더한 뒤 스스로 거둡니다. 결계로 닫힌 영역이라, 전개가 끝날 때 안에 있던 상대와 영역을 편 본인은 영역 밖으로 나갈 수 없습니다(영역 면역인 토우지는 상대로서는 제외).','영역 충돌: 상대도 영역을 펼치면 두 영역이 모두 펼쳐진 뒤 3초 동안 서로의 영역 효과(피해·기절·감속·가두기·영역 강화)가 상쇄되어 멈춥니다. 3초가 지나면 주력이 적은 쪽의 영역이 붕괴합니다(붕괴한 쪽은 0.8초 기절, 술식 번아웃 1.5초, 주력 -20). 스쿠나의 영역은 비교할 때 주력이 2배로 취급됩니다. 충돌 중에도 영역 유지 주력은 계속 들며, 영역 버튼을 눌러 스스로 거둘 수도 있습니다.']}
  ]
 };
@@ -1243,7 +1247,7 @@ DOCS.megumi={
   {name:'격타·던지기',jp:'Hand-to-Hand',tag:'마허라',sum:'맨손으로 붙잡아 던집니다. 시부야에서 스쿠나를 날려 보낸 완력.',lines:['쿨타임 4.5초. 근접에서 피해 27, 강한 넉백, 0.3초 기절. 검이 아니라 저주 보정이 없습니다.']},
   {name:'도약 내려찍기',jp:'Leap Slam',tag:'마허라',sum:'상대 위치로 뛰어올라 내려찍습니다.',lines:['쿨타임 6초. 반경 125 예고 원이 0.6초 뒤 피해 48.']},
   {name:'돌진 베기',jp:'Charge',tag:'마허라',sum:'돌진해 부딪힙니다.',lines:['쿨타임 5.5초. 돌진해 닿으면 피해 35.']},
-  {name:'정의의 회복',jp:'Positive Energy',tag:'마허라',sum:'정의 주력으로 몸을 고칩니다.',lines:['쿨타임 12초. 1.5초 동안 체력 108 회복, 이동 속도 감소.']},
+  {name:'정의의 회복',jp:'Positive Energy',tag:'마허라',sum:'정의 주력으로 몸을 고칩니다.',lines:['쿨타임 12초. 1.5초 동안 체력 90 회복, 이동 속도 감소.']},
   {name:'퇴마 일섬',jp:'Extermination Flash',tag:'마허라',sum:'크게 휘둘러 한 번에 쓸어냅니다.',lines:['쿨타임 12초. 반경 150 예고 원이 0.9초 뒤 피해 66, 강한 넉백.']},
   {name:'연참',jp:'Triple Slash',tag:'마허라',sum:'세 번 연속 벱니다.',lines:['쿨타임 6초. 각 피해 19.']}
  ]
@@ -1339,7 +1343,7 @@ var MA={
   touchR:130,touchD:38,cTouchR:150,cTouchD:52,cTouchStun:0.35,
   repelR:230,repelD:52,repelKb:720,repelStun:0.25,cRepelR:270,cRepelD:66,cRepelKb:820,cRepelStun:0.35,
   isoN:3,isoD:22,isoSp:330,isoLife:2.4,isoTurn:2.0,
-  healT:1.8,healRate:132,cHealT:1.4,cHealRate:192,
+  healT:1.8,healRate:110,cHealT:1.4,cHealRate:160,
   blink:230,evadeT:0.35,decoyT:3,decoyR:150,decoyD:30,
   rushD:50,rushKb:700,
   spikeT:2.2,spikeD:34,
@@ -1426,60 +1430,6 @@ DOCS.mahito={
  ]
 };
 var G=null;
-/* Online mode: server-authoritative host simulation; guest sends input and receives snapshots. */
-var NET={ws:null,role:null,room:null,peerChar:null,connected:false,remoteInput:{x:0,y:0},lastInputAt:0,lastSnapshotAt:0,starting:false,smoothTargets:null};
-function mpStatus(t){var e=$('#mpStatus');if(e)e.textContent=t}
-function mpSend(o){if(NET.ws&&NET.ws.readyState===1)NET.ws.send(JSON.stringify(o))}
-function mpConnect(done){
-  if(NET.ws&&NET.ws.readyState===1){done&&done();return}
-  var proto=location.protocol==='https:'?'wss:':'ws:';
-  var ws=new WebSocket(proto+'//'+location.host+'/ws');NET.ws=ws;
-  ws.onopen=function(){NET.connected=true;done&&done()};
-  ws.onclose=function(){NET.connected=false;mpStatus('서버 연결이 끊겼습니다. 서버 주소와 실행 상태를 확인하세요.')};
-  ws.onerror=function(){mpStatus('서버에 연결할 수 없습니다. 먼저 서버를 실행하고 배포해야 합니다.')};
-  ws.onmessage=function(ev){var m;try{m=JSON.parse(ev.data)}catch(e){return}mpMessage(m)};
-}
-function mpPack(root){var nodes=[],seen=new Map();function enc(v){if(v===null||typeof v==='string'||typeof v==='number'||typeof v==='boolean')return v;if(typeof v==='undefined')return {$u:1};if(typeof v==='function')return {$u:1};if(typeof v!=='object')return {$u:1};if(seen.has(v))return {$r:seen.get(v)};var id=nodes.length;seen.set(v,id);var n={a:Array.isArray(v),v:Array.isArray(v)?[]:{}};nodes.push(n);if(Array.isArray(v)){for(var i=0;i<v.length;i++)n.v[i]=enc(v[i])}else{Object.keys(v).forEach(function(k){if(typeof v[k]!=='function')n.v[k]=enc(v[k])})}return {$r:id}}return {root:enc(root),nodes:nodes}}
-function mpUnpack(pack){if(!pack||!pack.nodes)return null;var a=pack.nodes.map(function(n){return n.a?[]:{}});function dec(v){if(v&&typeof v==='object'){if('$r'in v)return a[v.$r];if('$u'in v)return undefined}return v}pack.nodes.forEach(function(n,i){Object.keys(n.v).forEach(function(k){a[i][k]=dec(n.v[k])})});function fill(v){if(v&&typeof v==='object'){if('$r'in v){var obj=a[v.$r],n=pack.nodes[v.$r];if(!obj.__filled){Object.defineProperty(obj,'__filled',{value:true,enumerable:false});Object.keys(n.v).forEach(function(k){var x=n.v[k];obj[k]=x&&typeof x==='object'&&'$r'in x?a[x.$r]:dec(x);if(obj[k]&&typeof obj[k]==='object')fill(x)})}return obj} }return v} // objects are already linked; fill nested refs recursively
-  pack.nodes.forEach(function(n,i){Object.keys(n.v).forEach(function(k){var x=n.v[k];if(x&&typeof x==='object'&&'$r'in x){a[i][k]=a[x.$r];fill(x)}else a[i][k]=dec(x)})});return a[pack.root.$r]}
-function mpMessage(m){
-  if(m.type==='created'){NET.role='host';NET.room=m.code;mpStatus('방 코드: '+m.code+' · 친구에게 코드 또는 초대 링크를 보내세요. 상대 접속을 기다리는 중입니다.');$('#mpCopy').disabled=false;return}
-  if(m.type==='joined'){NET.role='guest';NET.room=m.code;mpStatus('방 '+m.code+'에 입장했습니다. 캐릭터를 선택한 뒤 준비를 기다리세요.');mpSend({type:'ready',character:sel.id});return}
-  if(m.type==='peerJoined'){mpStatus('친구가 접속했습니다. 상대가 캐릭터를 선택하면 전투를 시작할 수 있습니다.');return}
-  if(m.type==='peerReady'){NET.peerChar=m.character;mpStatus('상대 캐릭터: '+(CH[m.character]?CH[m.character].name:m.character)+'. 전투를 시작합니다.');if(NET.role==='host')mpStartHost();return}
-  if(m.type==='start'){NET.peerChar=m.hostCharacter;NET.role='guest';newGame(m.hostCharacter,m.diff,{foe:m.guestCharacter,auto:false,big:m.big});G.f[1].ai=null;G.f[0].ai=null;G.me=G.f[1];G.foe=G.f[0];G.online=true;G.netHost=false;$('#select').hidden=true;$('#fight').hidden=false;$('#ov').hidden=true;setupHud(hudMe,G.me);setupHud(hudFoe,G.foe);buildButtons();$('.controls').style.display='';sizeCanvas();mpStatus('온라인 대전 중 · 친구와 실시간 연결됨');return}
-  if(m.type==='snapshot'&&NET.role==='guest'&&m.state){
-    var ng=mpUnpack(m.state);
-    if(ng&&ng.f&&ng.f.length>=2){
-      ng.online=true;ng.netHost=false;ng.me=ng.f[1];ng.foe=ng.f[0];
-      /* Keep the currently displayed positions and smoothly approach each new server snapshot. */
-      if(G&&G.f&&G.f.length>=2){
-        var oldMe=G.me||G.f[1],oldFoe=G.foe||G.f[0];
-        NET.smoothTargets={
-          me:{x:ng.f[1].x,y:ng.f[1].y},
-          foe:{x:ng.f[0].x,y:ng.f[0].y}
-        };
-        if(oldMe&&isFinite(oldMe.x)&&isFinite(oldMe.y)){ng.f[1].x=oldMe.x;ng.f[1].y=oldMe.y}
-        if(oldFoe&&isFinite(oldFoe.x)&&isFinite(oldFoe.y)){ng.f[0].x=oldFoe.x;ng.f[0].y=oldFoe.y}
-      }
-      G=ng;
-    }
-    return
-  }
-  if(m.type==='input'&&NET.role==='host'){NET.remoteInput=m.input||{x:0,y:0};return}
-  if(m.type==='skill'&&NET.role==='host'&&G&&!G.over){tryUse(G.foe,m.index|0);return}
-  if(m.type==='trial'&&NET.role==='host'&&G&&G.domain&&G.domain.type==='trial'&&G.domain.ph===1&&!G.domain.stmt&&other(G.domain.owner)===G.foe){var td=G.domain;td.stmt=m.choice;td.pt=0;td.say='피고인 진술: '+STMT_N[m.choice];td.sub='';return}
-  if(m.type==='error'){mpStatus(m.message||'온라인 연결 오류');return}
-  if(m.type==='left'){mpStatus('상대 연결이 종료되었습니다.');return}
-}
-function mpStartHost(){if(NET.role!=='host'||!NET.peerChar||NET.starting)return;NET.starting=true;newGame(sel.id,sel.diff,{foe:NET.peerChar,auto:false,big:sel.big});G.me.ai=null;G.foe.ai=null;G.online=true;G.netHost=true;$('#select').hidden=true;$('#fight').hidden=false;$('#ov').hidden=true;setupHud(hudMe,G.me);setupHud(hudFoe,G.foe);buildButtons();$('.controls').style.display='';sizeCanvas();mpSend({type:'start',hostCharacter:sel.id,guestCharacter:NET.peerChar,diff:sel.diff,big:sel.big});mpStatus('온라인 대전 중 · 친구와 실시간 연결됨')}
-function mpInit(){
-  $('#mpCreate').addEventListener('click',function(){mpConnect(function(){NET.role='host';mpSend({type:'create',character:sel.id})});mpStatus('서버에 연결 중…')});
-  $('#mpJoin').addEventListener('click',function(){var code=$('#mpCode').value.trim().toUpperCase();if(!code){mpStatus('방 코드를 입력하세요.');return}mpConnect(function(){mpSend({type:'join',code:code,character:sel.id})});mpStatus('방에 입장 중…')});
-  $('#mpCopy').addEventListener('click',function(){if(!NET.room)return;var url=location.origin+location.pathname+'?room='+encodeURIComponent(NET.room);if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(url).then(function(){mpStatus('초대 링크를 복사했습니다.')},function(){mpStatus('초대 링크: '+url)});else mpStatus('초대 링크: '+url)});
-  var params=new URLSearchParams(location.search),room=params.get('room');if(room){$('#mpCode').value=room;mpStatus('초대 링크로 방에 연결 중입니다…');mpConnect(function(){NET.role='guest';mpSend({type:'join',code:room,character:sel.id})})}
-}
-
 var sel={todo:safeGet('sjk_todo','1')==='1',id:safeGet('sjk_id','gojo'),foe:safeGet('sjk_foe','auto'),diff:safeGet('sjk_diff','normal'),auto:safeGet('sjk_auto','0')==='1',big:safeGet('sjk_big','0')==='1',tab:'me'};
 if(!CH[sel.id])sel.id='gojo';
 if(sel.foe!=='auto'&&!CH[sel.foe])sel.foe='auto';
@@ -1539,6 +1489,14 @@ function newGame(playerId,diff,opt){
     if((me.id==='geto'&&foe.id==='yuta0')||(me.id==='yuta0'&&foe.id==='geto'))banner('주술회전 0','옷코츠 유타 vs 게토 스구루','#ffb3d6');
     if((me.id==='yuta'&&foe.id==='ishigori')||(me.id==='ishigori'&&foe.id==='yuta'))banner('센다이 콜로니','옷코츠 유타 vs 이시고리 류','#4aa8ff');
     if((me.id==='higuruma'&&foe.id==='ishigori')||(me.id==='ishigori'&&foe.id==='higuruma'))banner('심판의 법정','히구루마 히로미 vs 이시고리 류','#e3d36a');
+  }
+  if(me.id==='jogo'||foe.id==='jogo'){
+    var jo=me.id==='jogo'?foe:me;
+    if(jo.id==='gojo')banner('저주 vs 최강','죠고 vs 고죠 사토루','#ff6a28');
+    else if(jo.id==='sukuna')banner('시부야 사변 · 화염 대결','죠고 vs 료멘스쿠나','#ff6a28');
+    else if(jo.id==='itadori')banner('시부야 사변','죠고 vs 이타도리 유지','#ff6a28');
+    else if(jo.id==='nanami')banner('시부야 사변','죠고 vs 나나미 켄토','#ff6a28');
+    else banner('특급주령 죠고','vs '+CH[jo.id].name,'#ff6a28');
   }
   return G;
 }
@@ -1641,6 +1599,8 @@ function castFx(f,o,c){
   }else if(c.name==='absorb'){
     a=rnd()*TAU;r=60+rnd()*60;
     spark(f.x+Math.cos(a)*r,f.y+Math.sin(a)*r,2,{a:a+Math.PI,spread:0.15,sp:200,c:rnd()<.5?'60,30,90':'170,120,230',life:0.4,size:4,drag:0.4,shape:1});
+  }else if(c.name==='jgmeteor'){
+    spark(f.x+(rnd()-.5)*44,f.y-f.r*1.4,2,{a:-Math.PI/2,spread:0.9,sp:260,c:rnd()<.5?RGB.orange:RGB.gold,life:0.45,size:3.5,drag:0.6,g:-30,shape:1});
   }else if(c.name==='ishgran'){
     a=rnd()*TAU;r=50+rnd()*40;
     spark(f.x+Math.cos(a)*r,f.y+Math.sin(a)*r,2,{a:a+Math.PI,spread:0.2,sp:260,c:RGB.ish,life:0.3,size:3,drag:0.4,shape:1});
@@ -1709,6 +1669,7 @@ function hit(src,t,dmg,o){
   if(src&&src.cf&&src.cf.k==='ce')dmg*=0.7; /* HIGURUMA: 주력 몰수 */
   if(t.st.amp>0&&!o.soul)dmg*=0.7; /* HIGURUMA: 영역전연 */
   if(src&&src.id==='yuta'&&domainBuff(src))o.pierce=true;
+  if(src&&src.id==='jogo'&&src.st.amp>0&&isGojo(t)&&infActive(t)){o.pierce=true;sceneLine('jgAmpInf',t.x,t.y-t.r-44,'영역전연 — 무하한 중화','#ffe3c0',22)} /* 영역전연으로 무하한을 중화 */
   if(t.todo&&todoGuard(t,src,dmg,o))return 0;
   if(t.id==='sukuna'&&t.st.nullify>0&&!o.soul&&!o.ratio)dmg*=0.7;
   if(t.dmgTaken)dmg*=t.dmgTaken; /* 소환수 피해 경감(홍룡 ×0.8) */
@@ -1957,7 +1918,7 @@ function blackFlash(f,o){
 }
 /* 영역 유지에 드는 주력(초당) */
 var DOMUP_K=2.25; /* 영역 유지 주력 배율(전 캐릭터 공통, 기본값 대비). 직전 4.5배의 절반 */
-var DOMUP={};(function(b){for(var k in b)DOMUP[k]=b[k]*DOMUP_K})({void:20,shrine:14,love:18,home:16,gamble:20,film:16,perfect:16,feast:16,garden:14,reverse:17});
+var DOMUP={};(function(b){for(var k in b)DOMUP[k]=b[k]*DOMUP_K})({void:20,shrine:14,love:18,home:16,gamble:20,film:16,perfect:16,feast:16,garden:14,reverse:17,coffin:16});
 function domEnd(dm,why){
   var ow=dm.owner;
   ow.st.burnout=Math.max(ow.st.burnout,2.5);
@@ -1971,6 +1932,7 @@ function clashLose(c,loser,why){
   ow.cast=null;ow.st.stun=Math.max(ow.st.stun,0.8);ow.st.burnout=Math.max(ow.st.burnout,1.5);ow.ce=Math.max(0,ow.ce-20);
   if(loser.type==='garden'){ow.ce=Math.min(ow.ce,MG.gar.backCe)}
   pop(ow.x,ow.y-ow.r-40,why||'영역 붕괴','#ffcf5e',26);
+  if(ow.id==='jogo'){var jcw=win.owner;jgTalk('jgClash',ow.x,ow.y-ow.r-92,isGojo(jcw)?'…무량공처가 내 영역을 삼키다니…':(jcw.id==='sukuna'?'…이것이 저주의 왕의 영역인가':'…내 영역이…'),'#ff8a3c',22,2.2)}
   ring(loser.x,loser.y,loser.rmax*0.5,loser.rmax,'rgba(255,207,94,0.8)',0.5,6);shake(14);
   G.domain=win;G.clash=null;
 }
@@ -2026,7 +1988,7 @@ function startDomain(f,o,type,opt){
   if(type==='film'){col='rgba(240,106,154,0.95)';rgb=RGB.film}
   if(type==='perfect'){col='rgba(95,208,196,0.95)';rgb=RGB.mahito}
   if(type==='feast'){col='rgba(74,168,255,0.95)';rgb=RGB.ish}
-  if(type==='coffin'){col='rgba(255,106,40,0.95)';rgb=RGB.orange;banner('영역전개','개관철위산','#ff6a28')}
+  if(type==='coffin'){col='rgba(255,106,40,0.95)';rgb=RGB.orange;jgTalk('jgDom',f.x,BIG?f.y-f.r-92:408,'재조차 남기지 않겠다!!','#ffb070',24,2.2)}
   if(type==='trial'){col='rgba(227,211,106,0.95)';rgb=RGB.gold}
   if(type==='garden'){col='rgba(111,143,232,0.95)';rgb='111,143,232'}
   if(type==='reverse'){col='rgba(255,230,140,0.95)';rgb='255,230,140'}
@@ -2062,7 +2024,7 @@ function startDomain(f,o,type,opt){
     return;
   }
   G.domain=nd;
-  if(type==='void')banner('영역전개','무량공처','#9fd8ff'); else if(type==='love')banner('영역전개','진안상애','#e8c26b'); else if(type==='home')banner('영역전개','이름 없는 영역','#ff9a3c'); else if(type==='gamble')banner('영역전개','좌살박도','#ff4fcf'); else if(type==='film')banner('영역전개','시포월궁전','#f06a9a'); else if(type==='perfect')banner('영역전개','자폐원돈과','#5fd0c4'); else if(type==='trial')banner('영역전개','주복사사','#e3d36a'); else if(type==='reverse')banner('영역전개','유명이경 「역월」','#ffe58a'); else if(type==='garden')banner('영역전개','감합암예정','#6f8fe8'); else if(type==='feast')banner('영역전개','이시고리의 영역','#4aa8ff'); else banner('영역전개','복마어주자','#ff4a68');
+  if(type==='void')banner('영역전개','무량공처','#9fd8ff'); else if(type==='love')banner('영역전개','진안상애','#e8c26b'); else if(type==='home')banner('영역전개','이름 없는 영역','#ff9a3c'); else if(type==='gamble')banner('영역전개','좌살박도','#ff4fcf'); else if(type==='film')banner('영역전개','시포월궁전','#f06a9a'); else if(type==='perfect')banner('영역전개','자폐원돈과','#5fd0c4'); else if(type==='trial')banner('영역전개','주복사사','#e3d36a'); else if(type==='reverse')banner('영역전개','유명이경 「역월」','#ffe58a'); else if(type==='garden')banner('영역전개','감합암예정','#6f8fe8'); else if(type==='feast')banner('영역전개','이시고리의 영역','#4aa8ff'); else if(type==='coffin')banner('영역전개','개관철위산','#ff6a28'); else banner('영역전개','복마어주자','#ff4a68');
 }
 
 /* ==================================================================
@@ -2419,7 +2381,7 @@ gojo:[
    after(f.x,f.y,f.r,'#f2f6ff',0.3);
    spark(f.x,f.y,10,{a:a+Math.PI,spread:0.6,sp:300,c:RGB.ice,life:0.3,size:3,shape:1});
  }},
- {cost:30,cd:10,run:function(f){f.st.heal=2.0;f.healRate=102;ring(f.x,f.y,f.r,f.r+50,'rgba(95,227,161,0.9)',0.6,4);spark(f.x,f.y,16,{sp:120,c:RGB.green,life:0.8,size:3,g:-40})}},
+ {cost:30,cd:10,run:function(f){f.st.heal=2.0;f.healRate=85;ring(f.x,f.y,f.r,f.r+50,'rgba(95,227,161,0.9)',0.6,4);spark(f.x,f.y,16,{sp:120,c:RGB.green,life:0.8,size:3,g:-40})}},
  {cost:24,cd:8,run:function(f){f.st.nullify=3.0;ring(f.x,f.y,f.r,f.r+60,'rgba(159,216,255,0.9)',0.5,4)}},
  {cost:90,cd:55,tech:true,ok:function(f){return G.domain&&G.domain.owner===f?'이미 영역 전개 중':null},run:function(f,o){startDomain(f,o,'void')}},
  {cost:12,cd:4,run:function(f,o){
@@ -2445,7 +2407,7 @@ sukuna:[
    after(f.x,f.y,f.r,'#f29bb2',0.3);
    spark(f.x,f.y,10,{a:a+Math.PI,spread:0.6,sp:300,c:RGB.crim,life:0.3,size:3,shape:1});
  }},
- {cost:25,cd:8,run:function(f){f.st.heal=2.0;f.healRate=90;ring(f.x,f.y,f.r,f.r+50,'rgba(95,227,161,0.9)',0.6,4);spark(f.x,f.y,16,{sp:120,c:RGB.green,life:0.8,size:3,g:-40})}},
+ {cost:25,cd:8,run:function(f){f.st.heal=2.0;f.healRate=75;ring(f.x,f.y,f.r,f.r+50,'rgba(95,227,161,0.9)',0.6,4);spark(f.x,f.y,16,{sp:120,c:RGB.green,life:0.8,size:3,g:-40})}},
  {cost:25,cd:8,run:function(f){f.st.nullify=2.5;ring(f.x,f.y,f.r,f.r+60,'rgba(255,208,214,0.9)',0.5,4)}},
  {cost:80,cd:50,tech:true,ok:function(f){return G.domain&&G.domain.owner===f?'이미 영역 전개 중':null},run:function(f,o){startDomain(f,o,'shrine')}},
  {cost:50,cd:22,tech:true,run:function(f,o){if(!f.wcsUsed){f.wcsUsed=true;doWcs(f,o,1,true)}else doWcs(f,o,1)}}
@@ -2482,7 +2444,7 @@ yuta:[
    }
  }},
  {cost:55,cd:16,ok:yRikaOn,run:function(f){doBeam(f)}},
- {cost:30,cd:9,run:function(f){yuRct(f);f.st.heal=2.0;f.healRate=96;ring(f.x,f.y,f.r,f.r+50,'rgba(95,227,161,0.9)',0.6,4);spark(f.x,f.y,16,{sp:120,c:RGB.green,life:0.8,size:3,g:-40})}},
+ {cost:30,cd:9,run:function(f){yuRct(f);f.st.heal=2.0;f.healRate=80;ring(f.x,f.y,f.r,f.r+50,'rgba(95,227,161,0.9)',0.6,4);spark(f.x,f.y,16,{sp:120,c:RGB.green,life:0.8,size:3,g:-40})}},
  {cost:70,cd:20,run:function(f){
    f.st.rika=8;f.rikaT=0.3;f.st.nullify=Math.max(f.st.nullify,3);
    ring(f.x,f.y,f.r,f.r+120,'rgba(255,190,225,0.95)',0.7,6);
@@ -2556,7 +2518,7 @@ itadori:[
      }
    }};
  }},
- {cost:30,cd:9,run:function(f){f.st.heal=2.0;f.healRate=84;ring(f.x,f.y,f.r,f.r+50,'rgba(95,227,161,0.9)',0.6,4);spark(f.x,f.y,16,{sp:120,c:RGB.green,life:0.8,size:3,g:-40})}},
+ {cost:30,cd:9,run:function(f){f.st.heal=2.0;f.healRate=70;ring(f.x,f.y,f.r,f.r+50,'rgba(95,227,161,0.9)',0.6,4);spark(f.x,f.y,16,{sp:120,c:RGB.green,life:0.8,size:3,g:-40})}},
  {cost:25,cd:8,run:function(f){f.st.nullify=2.5;ring(f.x,f.y,f.r,f.r+60,'rgba(255,208,160,0.9)',0.5,4)}},
  {cost:120,cd:60,tech:true,ok:function(f){return G.domain&&G.domain.owner===f?'이미 영역 전개 중':null},run:function(f,o){startDomain(f,o,'home')}},
  {cost:25,cd:4,tech:true,ok:function(f){return f.awk?null:'각성 전 (흑섬을 먼저 성공)'},run:function(f,o){
@@ -2873,12 +2835,14 @@ function ishUpdate(f,o){
   if(r<0.22)sceneLine('ish20',f.x,f.y-f.r-64,'마지막 한 방이다','#ffe45e',24);
 }
 function sceneOver(w){
+  jgOver(w);
   if(!w||w.id!=='yuta')return;
   var l=other(w);
   if(l.id==='ishigori')pop(l.x,l.y-70,'배가 찼다… 고맙다, 유타','#4aa8ff',28);
 }
 function sceneEnd(){
   var kn0=kaNote(G.me,G.foe);if(kn0)return kn0;
+  var jn0=jgNote(G.me,G.foe);if(jn0)return jn0;
   var a=G.me,b=G.foe,y=a.id==='yuta'?a:(b.id==='yuta'?b:null),ig=a.id==='ishigori'?a:(b.id==='ishigori'?b:null);
   var hg=a.id==='higuruma'?a:(b.id==='higuruma'?b:null);
   if(hg&&ig&&!y){
@@ -3074,18 +3038,454 @@ LOGIC.toji=[
  }}
 ];
 
-function jgPunch(f,o,rng,dmg,pw,last){var a=Math.atan2(o.y-f.y,o.x-f.x);arcFx(f.x,f.y,rng*0.6,a-0.85,a+0.85,last?'rgba(255,170,70,0.95)':'rgba(255,110,40,0.95)',last?12:8,0.2);push(f,a,240);if(len(o.x-f.x,o.y-f.y)>rng+o.r)return 0;var d=hit(f,o,dmg,{});if(d>0){push(o,a,pw);o.st.burn=Math.max(o.st.burn||0,last?2.5:1.2);spark(o.x,o.y,last?22:10,{a:a,spread:1.5,sp:340,c:RGB.orange,life:0.38,size:3.5,shape:1});ring(o.x,o.y,6,last?96:56,'rgba(255,130,50,0.95)',0.3,last?7:4);if(last){o.st.stun=Math.max(o.st.stun,0.2);shake(8)}}return d}
-function jgSwarm(f,o){var base=aimDir(f,o,880,leadOf(f)),n=7,i;pop(f.x,f.y-f.r-34,'회군비충','#ffb070',22);for(i=0;i<n;i++)(function(i){later(i*0.06,function(){if(f.dead||G.over||f.st.stun>0)return;var a=base+(i/(n-1)-0.5)*0.55;shoot(f,'jfire',a,880,12,22,{life:0.9});spark(f.x+Math.cos(a)*(f.r+8),f.y+Math.sin(a)*(f.r+8),4,{a:a,spread:0.5,sp:300,c:RGB.orange,life:0.25,size:3,shape:1})})})(i)}
-function jgErupt(f,o){var cx=o.x,cy=o.y,R=135;pop(f.x,f.y-f.r-34,'분화','#ff8a3c',24);G.fx.push({k:'zone',x:cx,y:cy,r:R,t:0,life:0.7,color:'255,110,40'});later(0.7,function(){if(f.dead||G.over)return;var oo=other(f);ring(cx,cy,10,R*1.3,'rgba(255,120,40,0.95)',0.5,9);rays(cx,cy,20,10,R*1.5,'rgba(255,200,110,0.9)',0.45,4);spark(cx,cy,60,{a:-Math.PI/2,spread:0.9,sp:520,c:RGB.orange,life:0.8,size:5,drag:1.2,shape:1});shake(12);flash(RGB.orange,0.3,0.3);if(!oo.dead&&len(oo.x-cx,oo.y-cy)<R+oo.r){var d=hit(f,oo,150,{});if(d>0){oo.st.stun=Math.max(oo.st.stun,0.5);oo.st.burn=Math.max(oo.st.burn||0,3);push(oo,-Math.PI/2,300)}}})}
-function jgMeteor(f,o){pop(f.x,f.y-f.r-34,'극번 「운」','#ff8a3c',26);f.cast={name:'jgmeteor',t:1.0,slow:0.25,fn:function(f,o){var cx=o.x,cy=o.y,R=200;G.fx.push({k:'zone',x:cx,y:cy,r:R,t:0,life:1.1,color:'255,110,40'});ring(cx,cy,R,R+10,'rgba(255,120,40,0.9)',1.1,4);later(1.1,function(){if(G.over)return;var oo=other(f);ring(cx,cy,10,R*1.2,'rgba(255,120,40,0.95)',0.6,10);ring(cx,cy,6,R*0.7,'rgba(255,240,200,0.95)',0.4,6);rays(cx,cy,26,20,R*1.1,'rgba(255,190,100,0.9)',0.5,4);spark(cx,cy,80,{sp:560,c:RGB.orange,life:0.9,size:5,drag:1.8,shape:1});flash(RGB.orange,0.45,0.4);shake(20);freeze(4);if(!oo.dead&&len(oo.x-cx,oo.y-cy)<R+oo.r){var d=hit(f,oo,330,{});if(d>0){push(oo,Math.atan2(oo.y-cy,oo.x-cx),520);oo.st.burn=Math.max(oo.st.burn||0,4);oo.st.stun=Math.max(oo.st.stun,0.4)}}})}}}
+/* ==================================================================
+   죠고 (漏瑚) — 대지의 두려움에서 태어난 특급주령. 수치는 여기서 조절하세요
+   ================================================================== */
+var JG={
+  ampT:4,ampCombo:1.2,ampDmg:1,ampCost:40,ampCd:20,
+  bugN:6,bugD:22,bugSp:420,bugTurn:2.6,bugLife:2.4,bugR:11,bugAoe:62,bugFuse:0.2,
+  eruR:135,eruWarn:0.7,eruD:150,
+  metR:200,metWarn:1.1,metCast:1.0,metD:330,metDomCast:0.55,metDomWarn:0.6,
+  rageAt:0.4
+};
+function jgAmp(f){return !!f&&f.id==='jogo'&&f.st.amp>0}
+function jgDomOn(f){var d=G.domain;return !!(d&&!G.clash&&d.type==='coffin'&&d.owner===f&&d.age>=d.expand)}
+/* 대사: '|'로 줄을 나눈다. 같은 key는 한 판에 한 번만 */
+function jgTalk(key,x,y,text,color,size,life){
+  if(!G||!G.sc||G.sc[key])return;
+  G.sc[key]=1;
+  var L=String(text).split('|'),i,cx=clamp(x,130,W-130),cy=Math.max(48,y);
+  for(i=0;i<L.length;i++)say(cx,cy+i*26,L[i],color||'#ff8a3c',size||22,life||2.4);
+}
+function jgPunch(f,o,rng,dmg,pw,last){
+  var a=Math.atan2(o.y-f.y,o.x-f.x),amp=f.st.amp>0;
+  arcFx(f.x,f.y,rng*0.6,a-0.85,a+0.85,amp?(last?'rgba(255,236,200,0.95)':'rgba(255,255,255,0.9)'):(last?'rgba(255,170,70,0.95)':'rgba(255,110,40,0.95)'),last?12:8,0.2);
+  push(f,a,240);
+  if(len(o.x-f.x,o.y-f.y)>rng+o.r)return 0;
+  var d=hit(f,o,dmg*(amp?JG.ampDmg:1),{});
+  if(d>0){
+    push(o,a,pw);
+    if(!amp)o.st.burn=Math.max(o.st.burn||0,last?2.5:1.2); /* 영역전연 중에는 술식(화염)을 쓸 수 없다 */
+    spark(o.x,o.y,last?22:10,{a:a,spread:1.5,sp:340,c:amp?RGB.white:RGB.orange,life:0.38,size:3.5,shape:1});
+    ring(o.x,o.y,6,last?96:56,amp?'rgba(255,240,210,0.95)':'rgba(255,130,50,0.95)',0.3,last?7:4);
+    if(last){o.st.stun=Math.max(o.st.stun,0.2);shake(8)}
+  }
+  return d;
+}
+/* 화력충(火礫蟲): 정수리 분화구에서 날개 달린 벌레를 풀어 추적시킨다. 닿으면 기괴한 소리를 낸 뒤 폭발 */
+function jgBugs(f,o){
+  var n=JG.bugN,i;
+  pop(f.x,f.y-f.r-46,'화력충','#ffb070',22);
+  ring(f.x,f.y-f.r*1.4,6,80,'rgba(255,140,50,0.9)',0.35,5);
+  for(i=0;i<n;i++)(function(i){
+    later(i*0.08,function(){
+      if(f.dead||G.over||f.st.stun>0)return;
+      var oo=other(f),a0=Math.atan2(oo.y-f.y,oo.x-f.x)+(i-(n-1)/2)*0.42+(rnd()-.5)*0.2,sx=f.x,sy=f.y-f.r*1.35;
+      G.proj.push({kind:'jbug',owner:f,x:sx,y:sy,vx:Math.cos(a0)*JG.bugSp,vy:Math.sin(a0)*JG.bugSp,r:JG.bugR,dmg:JG.bugD,life:JG.bugLife,pierce:false,hits:[],trail:[],sf:1,dead:false,ph:rnd()*TAU});
+      spark(sx,sy,5,{a:-Math.PI/2,spread:1.2,sp:200,c:RGB.orange,life:0.3,size:3,shape:1});
+    });
+  })(i);
+}
+function jgBugBurst(p,t){
+  var f=p.owner,ox=p.x-t.x,oy=p.y-t.y;
+  pop(p.x,p.y-18,'끼이익','#ffcf8a',18);
+  ring(p.x,p.y,4,28,'rgba(255,214,150,0.9)',0.2,3);
+  later(JG.bugFuse,function(){
+    if(G.over)return;
+    var oo=other(f),px=oo.x+ox,py=oo.y+oy; /* 침이 박힌 채 따라간다 */
+    ring(px,py,6,JG.bugAoe,'rgba(255,120,40,0.95)',0.3,5);
+    spark(px,py,14,{sp:340,c:RGB.orange,life:0.4,size:3.5,shape:1});
+    shake(3);
+    if(BIG)cityDamage(px,py,JG.bugAoe,60);
+    if(!oo.dead){
+      var d=hit(f,oo,p.dmg,{});
+      if(d>0){oo.st.burn=Math.max(oo.st.burn||0,2);push(oo,Math.atan2(oo.y-py,oo.x-px),150);f.stats.bf++}
+    }
+  });
+}
+/* 분화: 상대 발밑에 작은 화산이 솟았다가 터진다 (원작의 '지뢰처럼 설치하는 분화') */
+function jgErupt(f,o){
+  var cx=o.x,cy=o.y,R=JG.eruR,W0=JG.eruWarn;
+  pop(f.x,f.y-f.r-34,'분화','#ff8a3c',24);
+  G.fx.push({k:'zone',x:cx,y:cy,r:R,t:0,life:W0,color:'255,110,40'});
+  G.fx.push({k:'jgvolc',x:cx,y:cy,r:R,t:0,life:W0+0.6,w:W0});
+  later(W0,function(){
+    if(f.dead||G.over)return;
+    var oo=other(f);
+    ring(cx,cy,10,R*1.3,'rgba(255,120,40,0.95)',0.5,9);
+    rays(cx,cy,20,10,R*1.5,'rgba(255,200,110,0.9)',0.45,4);
+    spark(cx,cy,60,{a:-Math.PI/2,spread:0.9,sp:520,c:RGB.orange,life:0.8,size:5,drag:1.2,shape:1});
+    shake(12);flash(RGB.orange,0.3,0.3);
+    if(BIG)cityDamage(cx,cy,R,320);
+    if(!oo.dead&&len(oo.x-cx,oo.y-cy)<R+oo.r){
+      var d=hit(f,oo,JG.eruD,{});
+      if(d>0){oo.st.stun=Math.max(oo.st.stun,0.5);oo.st.burn=Math.max(oo.st.burn||0,3);push(oo,-Math.PI/2,300);f.stats.bf++}
+    }
+  });
+}
+/* 극번 「운」: 하늘에서 거대한 불덩이 운석이 떨어진다. 자신의 영역 안에서는 필중 */
+function jgMeteor(f,o){
+  var T=(jgDomOn(f)&&o.st.nullify<=0)?JG.metDomCast:JG.metCast;
+  pop(f.x,f.y-f.r-46,'극번 「운」','#ff8a3c',26);
+  f.cast={name:'jgmeteor',t:T,t0:T,slow:0.25,fn:function(f,o){
+    var dom=jgDomOn(f)&&o.st.nullify<=0,R=JG.metR,warn=dom?JG.metDomWarn:JG.metWarn,cx=o.x,cy=o.y,tg=o;
+    if(!dom){
+      G.fx.push({k:'zone',x:cx,y:cy,r:R,t:0,life:warn,color:'255,110,40'});
+      ring(cx,cy,R,R+10,'rgba(255,120,40,0.9)',warn,4);
+    }else{
+      pop(o.x,o.y-o.r-44,'필중','#ffb070',24);
+      ring(cx,cy,R*1.1,R*0.5,'rgba(255,90,40,0.9)',warn,4);
+    }
+    G.fx.push({k:'jgmet',x:cx,y:cy,r:R,t:0,life:warn+0.02,track:dom,tgt:tg});
+    later(warn,function(){
+      if(G.over)return;
+      var oo=other(f),ix=cx,iy=cy;
+      if(dom&&jgDomOn(f)&&oo.st.nullify<=0){ix=oo.x;iy=oo.y} /* 영역 안: 낙하 지점이 상대를 따라간다 */
+      ring(ix,iy,10,R*1.2,'rgba(255,120,40,0.95)',0.6,10);
+      ring(ix,iy,6,R*0.7,'rgba(255,240,200,0.95)',0.4,6);
+      rays(ix,iy,26,20,R*1.1,'rgba(255,190,100,0.9)',0.5,4);
+      spark(ix,iy,80,{sp:560,c:RGB.orange,life:0.9,size:5,drag:1.8,shape:1});
+      spark(ix,iy,30,{a:-Math.PI/2,spread:1.4,sp:380,c:RGB.gold,life:1.0,size:4,drag:0.8,g:-40});
+      flash(RGB.orange,0.45,0.4);shake(20);freeze(4);
+      G.fx.push({k:'scorch',x:ix,y:iy,r:R*0.55,t:0,life:3.2});
+      if(BIG)cityDamage(ix,iy,R*1.1,700);
+      if(!oo.dead&&len(oo.x-ix,oo.y-iy)<R+oo.r){
+        var d=hit(f,oo,JG.metD,{});
+        if(d>0){push(oo,Math.atan2(oo.y-iy,oo.x-ix),520);oo.st.burn=Math.max(oo.st.burn||0,4);oo.st.stun=Math.max(oo.st.stun,0.4);f.stats.bf++}
+      }
+    });
+  }};
+}
+function jgAmpFx(f){
+  ring(f.x,f.y,f.r,f.r+70,'rgba(255,236,205,0.9)',0.5,4);
+  ring(f.x,f.y,f.r+10,f.r+100,'rgba(255,170,90,0.5)',0.65,2);
+  spark(f.x,f.y,16,{sp:220,c:RGB.gold,life:0.5,size:3,shape:1});
+  pop(f.x,f.y-f.r-46,'영역전연','#ffe3c0',24);
+}
+/* 매 프레임: 분화구의 불씨, 분노의 분화, 상호 대사 */
+function jgUpdate(f,o){
+  if(f.dead)return;
+  var rage=f.hp<f.maxhp*JG.rageAt;
+  if(!(f.st.amp>0)&&rnd()<(rage?0.9:0.3))spark(f.x+(rnd()-.5)*f.r*0.6,f.y-f.r*1.5,1,{a:-Math.PI/2,spread:0.6,sp:rage?140:85,c:rnd()<.5?RGB.orange:RGB.gold,life:0.8,size:2.8,drag:0.4,g:-34});
+  if(rage&&!f.jgRage){
+    f.jgRage=true;
+    pop(f.x,f.y-f.r-62,'분노의 분화','#ff8a3c',24);
+    ring(f.x,f.y-f.r*1.4,10,150,'rgba(255,120,40,0.95)',0.5,7);
+    rays(f.x,f.y-f.r*1.4,16,12,120,'rgba(255,200,110,0.9)',0.4,3);
+    spark(f.x,f.y-f.r*1.4,30,{a:-Math.PI/2,spread:1.2,sp:380,c:RGB.orange,life:0.8,size:4,drag:0.8,g:-20,shape:1});
+    flash(RGB.orange,0.2,0.3);shake(8);
+    jgTalk('jgRage',f.x,f.y-f.r-92,'이 몸을 얕보지 마라!','#ff8a3c',24,2.0);
+  }
+  jgBanter(f,o);
+}
+/* 상호 대사 (원작 장면을 옮긴 의역) */
+function jgBanter(f,o){
+  var t=G.time,id=o.id,fy=f.y-f.r-92,oy=o.y-o.r-72;
+  if(id==='gojo'){
+    if(t>=1.2)jgTalk('jgB1',o.x,oy,'너, 약하잖아','#9fd8ff',24,2.2);
+    if(t>=3.0)jgTalk('jgB2',f.x,fy,'…뭐라고 했느냐!','#ff8a3c',24);
+  }else if(id==='sukuna'){
+    if(t>=1.2)jgTalk('jgB1',o.x,oy,'일격이라도 먹여 봐라|그럼 네 편이 되어 주마','#ff6b81',22,2.8);
+    if(t>=3.6)jgTalk('jgB2',f.x,fy,'…후회하게 해 주마','#ff8a3c',22);
+  }else if(id==='itadori'){
+    if(t>=1.2)jgTalk('jgB1',f.x,fy,'네 안의 왕을 깨우러 왔다','#ff8a3c',22);
+  }else if(id==='nanami'){
+    if(t>=1.2)jgTalk('jgB1',f.x,fy,'술사 놈들… 시부야째 태워 주마','#ff8a3c',22);
+  }else if(t>=1.2){
+    jgTalk('jgB1',f.x,fy,'우리야말로 진정한 인간이다','#ff8a3c',22);
+  }
+}
+/* 결착 대사 */
+function jgOver(w){
+  var j=G.me.id==='jogo'?G.me:(G.foe.id==='jogo'?G.foe:null);
+  if(!j)return;
+  var o=other(j);
+  if(w===j){
+    jgTalk('jgWin',j.x,j.y-j.r-92,'이것이 저주의 힘이다','#ff8a3c',24,1.9);
+  }else if(w===o){
+    if(o.id==='sukuna'){
+      jgTalk('jgWin2',o.x,o.y-o.r-92,'자랑스러워해라. 너는 강했다','#ff6b81',22,1.9);
+      jgTalk('jgLose',j.x,j.y-j.r-92,'100년 뒤 황야에서 웃는 건|내가 아니어도 좋다','#ff8a3c',22,1.9);
+    }else jgTalk('jgLose',j.x,j.y-j.r-92,'…저주가 인간으로 서는 날이 온다','#ff8a3c',22,1.9);
+  }
+}
+function jgNote(a,b){
+  var j=a.id==='jogo'?a:(b.id==='jogo'?b:null);
+  if(!j)return '';
+  var o=other(j),w=G.over&&G.over.winner;
+  if(o.id==='gojo'){
+    if(w===o)return '죠고 vs 고죠 · 고죠의 승리. 원작과 같은 결과입니다. 첫 대결에서 죠고는 영역이 무량공처에 무너진 데다 목이 뜯겼고, 하나미가 끼어든 덕에 겨우 도망쳤습니다. 시부야에서는 하나미와 영역전연으로 무하한을 뚫으려 했지만 고죠를 쓰러뜨리지는 못했습니다.';
+    if(w===j)return '죠고 vs 고죠 · 죠고의 승리. 원작과 다른 결과입니다. 원작의 죠고는 첫 대결에서 영역까지 밀려 목을 뜯겼고, 시부야에서 고죠를 멈춘 것도 죠고가 아니라 옥문강의 봉인이었습니다.';
+    return '죠고 vs 고죠 · 쌍방 쓰러짐. 원작에는 없는 결말입니다.';
+  }
+  if(o.id==='sukuna'){
+    if(w===o)return '시부야 사변 · 스쿠나의 승리. 원작과 같은 결과입니다. 죠고는 극번 「운」까지 쓰고도 스쿠나에게 거의 닿지 못했고, 스쿠나의 불꽃에 소멸했습니다. 스쿠나는 그의 강함만큼은 인정했습니다.';
+    if(w===j)return '시부야 사변 · 죠고의 승리. 원작과 다른 결과입니다. 원작의 죠고는 스쿠나를 거의 맞히지 못한 채 소멸했습니다.';
+    return '시부야 사변 · 쌍방 쓰러짐. 원작에는 없는 결말입니다.';
+  }
+  if(o.id==='itadori')return '시부야 사변 시점의 대결입니다. 원작의 죠고는 이타도리에게 스쿠나의 손가락을 먹여 스쿠나를 깨웠고, 깨어난 스쿠나에게 소멸했습니다.';
+  if(o.id==='nanami')return '시부야 사변 시점의 대결입니다. 원작의 죠고는 사변을 일으킨 주령 쪽의 핵심 전력이었고, 끝내 고죠 사토루와 료멘스쿠나에게 패했습니다.';
+  var on=CH[o.id].short,oc=on.charCodeAt(on.length-1);
+  return '죠고 vs '+on+((oc>=0xAC00&&oc<=0xD7A3&&(oc-0xAC00)%28>0)?'은':'는')+' 원작에 없는 가상 대결입니다. 원작의 죠고는 고죠 사토루와 료멘스쿠나에게 패했습니다.';
+}
+
+/* ---- 죠고 외형: 선택 화면 토큰은 CSS, 전투 화면은 아래 (화산 머리 · 외눈 · 검은 이빨 · 귀마개) ---- */
+function drawJgFace(f){
+  var r=f.r,o=other(f),t=G.time,rage=f.hp<f.maxhp*JG.rageAt,ea=Math.atan2(o.y-f.y,o.x-f.x),k;
+  /* 화산 머리: 어두운 암석의 원뿔과 분화구의 열기 */
+  ctx.fillStyle='#4e251a';
+  ctx.beginPath();ctx.moveTo(-r*1.05,r*0.04);ctx.lineTo(-r*0.4,-r*1.08);ctx.lineTo(r*0.4,-r*1.08);ctx.lineTo(r*1.05,r*0.04);
+  ctx.quadraticCurveTo(0,-r*0.62,-r*1.05,r*0.04);ctx.closePath();ctx.fill();
+  ctx.save();ctx.globalCompositeOperation='lighter';
+  glow(0,-r*0.98,r*0.62,'255,150,50',(rage?1:0.8)*(0.8+0.2*Math.sin(t*10)));
+  ctx.restore();
+  ctx.strokeStyle='rgba(255,160,64,0.9)';ctx.lineWidth=1.8;ctx.lineCap='round';
+  ctx.beginPath();
+  ctx.moveTo(-r*0.18,-r*0.92);ctx.lineTo(-r*0.3,-r*0.58);ctx.lineTo(-r*0.26,-r*0.34);
+  ctx.moveTo(r*0.2,-r*0.95);ctx.lineTo(r*0.32,-r*0.6);ctx.lineTo(r*0.5,-r*0.32);
+  ctx.moveTo(0,-r*0.9);ctx.lineTo(r*0.04,-r*0.55);
+  ctx.stroke();
+  /* 귀마개 같은 장식 */
+  for(k=-1;k<=1;k+=2){
+    ctx.fillStyle='#8c97b3';ctx.beginPath();ctx.arc(k*r*0.98,r*0.28,r*0.2,0,TAU);ctx.fill();
+    ctx.fillStyle='#2e3346';ctx.beginPath();ctx.arc(k*r*0.98,r*0.28,r*0.12,0,TAU);ctx.fill();
+  }
+  /* 외눈: 상대를 쫓는다 */
+  var ey=r*0.22,pxo=Math.cos(ea)*r*0.14,pyo=Math.sin(ea)*r*0.09;
+  ctx.fillStyle=rage?'#ffe1c8':'#fbf4e8';
+  ctx.beginPath();ctx.ellipse(0,ey,r*0.46,r*0.27,0,0,TAU);ctx.fill();
+  ctx.lineWidth=2.2;ctx.strokeStyle='#2a1710';ctx.stroke();
+  ctx.fillStyle=rage?'#ff5a1c':'#7a3a22';
+  ctx.beginPath();ctx.arc(pxo,ey+pyo,r*0.2,0,TAU);ctx.fill();
+  ctx.fillStyle='#120a08';
+  ctx.beginPath();ctx.arc(pxo,ey+pyo,r*0.11,0,TAU);ctx.fill();
+  ctx.fillStyle='rgba(255,255,255,0.85)';
+  ctx.beginPath();ctx.arc(pxo-r*0.05,ey+pyo-r*0.06,r*0.035,0,TAU);ctx.fill();
+  /* 성난 눈썹 */
+  ctx.strokeStyle='#241410';ctx.lineWidth=3.4;ctx.lineCap='round';
+  ctx.beginPath();ctx.moveTo(-r*0.6,-r*0.2);ctx.lineTo(-r*0.08,-r*0.07);ctx.moveTo(r*0.6,-r*0.2);ctx.lineTo(r*0.08,-r*0.07);ctx.stroke();
+  /* 검은 이빨(お歯黒): 분노하면 입이 크게 벌어진다 */
+  var my0=r*(rage?0.58:0.64),mh=r*(rage?0.3:0.22),mw=r*0.86;
+  ctx.fillStyle='#14100c';rrPath(-mw/2,my0,mw,mh,mh*0.45);ctx.fill();
+  ctx.strokeStyle=CH.jogo.fill;ctx.lineWidth=1.3;
+  for(k=1;k<5;k++){var gx=-mw/2+mw*k/5;ctx.beginPath();ctx.moveTo(gx,my0+mh*0.12);ctx.lineTo(gx,my0+mh*0.88);ctx.stroke()}
+}
+/* 화산 원뿔과 분화구의 불꽃(머리 위), 영역전연의 막, 극번 시전 중 머리 위에서 커지는 불덩이 */
+function drawJgAura(f){
+  var s=f.st,r=f.r,t=G.time,rage=f.hp<f.maxhp*JG.rageAt,mc=!!(f.cast&&f.cast.name==='jgmeteor'),i;
+  var big=(rage?1.4:1)*(mc?1.5:1),fl=1+0.1*Math.sin(t*14)+0.06*Math.sin(t*23+1);
+  var cw0=r*1.3,cw1=r*0.55,cy0=-r*0.1,cy1=-r*2.0; /* 머리 위로 솟은 화산: 밑동 → 분화구 */
+  ctx.save();
+  var gr=ctx.createLinearGradient(0,cy1,0,cy0);gr.addColorStop(0,'#c27048');gr.addColorStop(0.5,'#8a4229');gr.addColorStop(1,'#4a2219');
+  ctx.beginPath();ctx.moveTo(-cw0,cy0);ctx.quadraticCurveTo(-r*1.0,-r*0.55,-cw1,cy1);ctx.lineTo(cw1,cy1);ctx.quadraticCurveTo(r*1.0,-r*0.55,cw0,cy0);ctx.closePath();
+  ctx.fillStyle=gr;ctx.fill();
+  ctx.lineWidth=2;ctx.strokeStyle='rgba(255,150,60,'+(0.55+0.2*Math.sin(t*5))+')';ctx.stroke();
+  ctx.lineWidth=1.8;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle='rgba(255,176,80,0.85)';
+  ctx.beginPath();
+  ctx.moveTo(-cw1*0.45,cy1+3);ctx.lineTo(-r*0.62,-r*1.4);ctx.lineTo(-r*0.5,-r*1.0);ctx.lineTo(-r*0.78,-r*0.55);
+  ctx.moveTo(cw1*0.55,cy1+3);ctx.lineTo(r*0.64,-r*1.45);ctx.lineTo(r*0.54,-r*1.0);ctx.lineTo(r*0.8,-r*0.5);
+  ctx.moveTo(0,cy1+3);ctx.lineTo(r*0.05,-r*1.5);ctx.lineTo(-r*0.06,-r*1.0);
+  ctx.stroke();
+  ctx.globalCompositeOperation='lighter';
+  var cr=ctx.createRadialGradient(0,cy1,0,0,cy1,cw1*1.1);cr.addColorStop(0,'rgba(255,236,160,0.95)');cr.addColorStop(0.55,'rgba(255,140,40,0.85)');cr.addColorStop(1,'rgba(255,90,28,0)');
+  ctx.fillStyle=cr;ctx.beginPath();ctx.ellipse(0,cy1,cw1*1.1,cw1*0.45,0,0,TAU);ctx.fill();
+  glow(0,cy1,r*1.7*big,'255,110,40',0.3+0.1*Math.sin(t*9));
+  for(i=-1;i<=1;i++){
+    var fx=i*cw1*0.5,h=(i===0?r*1.05:r*0.72)*big*fl*(0.88+0.12*Math.sin(t*13+i*2.1)),sw=Math.sin(t*9+i*1.7)*3;
+    var fg=ctx.createLinearGradient(0,cy1,0,cy1-h);
+    fg.addColorStop(0,'rgba(255,90,28,0.95)');fg.addColorStop(0.55,'rgba(255,170,60,0.8)');fg.addColorStop(1,'rgba(255,225,150,0)');
+    ctx.beginPath();ctx.moveTo(fx-cw1*0.4,cy1+2);
+    ctx.quadraticCurveTo(fx-cw1*0.42+sw*0.3,cy1-h*0.55,fx+sw,cy1-h);
+    ctx.quadraticCurveTo(fx+cw1*0.42+sw*0.3,cy1-h*0.55,fx+cw1*0.4,cy1+2);
+    ctx.closePath();ctx.fillStyle=fg;ctx.fill();
+  }
+  if(s.amp>0){
+    glow(0,0,r*2.3,'255,225,190',0.22);
+    ctx.lineWidth=3;ctx.setLineDash([7,6]);ctx.lineDashOffset=-t*40;
+    ctx.strokeStyle='rgba(255,236,205,0.9)';ctx.beginPath();ctx.arc(0,0,r+14+2*Math.sin(t*9),0,TAU);ctx.stroke();
+    ctx.setLineDash([]);ctx.lineWidth=1.6;ctx.strokeStyle='rgba(255,170,90,0.7)';ctx.beginPath();ctx.arc(0,0,r+22,0,TAU);ctx.stroke();
+  }
+  if(mc){
+    var jp=clamp(1-f.cast.t/(f.cast.t0||JG.metCast),0,1),mr=10+38*jp,my=cy1-r*1.0-mr;
+    glow(0,my,mr*2.8,'255,110,40',0.3+0.4*jp);
+    glow(0,my,mr*1.4,'255,235,170',0.4+0.4*jp);
+    ctx.globalCompositeOperation='source-over';
+    ctx.fillStyle='#34170f';ctx.beginPath();ctx.arc(0,my,mr*0.72,0,TAU);ctx.fill();
+    ctx.lineWidth=2;ctx.strokeStyle='rgba(255,170,70,0.9)';ctx.stroke();
+  }
+  ctx.restore();
+}
+/* 바닥 연출(분화 화산, 운석의 그림자, 크레이터): 파이터보다 먼저 그린다 */
+function jgDrawGround(){
+  if(!G||!G.fx)return;
+  for(var i=0;i<G.fx.length;i++){
+    var e=G.fx[i];
+    if(e.k==='scorch')jgDrawScorch(e);
+    else if(e.k==='jgvolc')jgDrawVolc(e);
+    else if(e.k==='jgmet')jgDrawMetShadow(e);
+  }
+}
+function jgDrawScorch(e){
+  var k=e.t/e.life,a=Math.max(0,1-k*k);
+  ctx.save();
+  ctx.globalAlpha=0.75*a;ctx.fillStyle='#140806';ctx.beginPath();ctx.arc(e.x,e.y,e.r,0,TAU);ctx.fill();
+  ctx.globalAlpha=a;ctx.lineWidth=3;ctx.strokeStyle='rgba(255,120,40,'+(0.8*(1-k))+')';ctx.beginPath();ctx.arc(e.x,e.y,e.r*0.92,0,TAU);ctx.stroke();
+  ctx.globalCompositeOperation='lighter';glow(e.x,e.y,e.r*0.9,'255,100,30',0.3*(1-k));
+  ctx.restore();
+}
+function jgDrawVolc(e){
+  var rise=Math.min(1,e.t/e.w),af=e.t>e.w?(e.t-e.w)/Math.max(0.01,e.life-e.w):0;
+  var h=e.r*0.34*(rise*rise*(3-2*rise))*(1-af*0.35),bw=e.r*0.28;
+  ctx.save();
+  ctx.globalAlpha=af>0?Math.max(0,1-af*af):1;
+  ctx.translate(e.x,e.y);
+  ctx.globalCompositeOperation='lighter';
+  glow(0,-h*0.6,e.r*0.5*(0.4+0.6*rise),'255,110,40',0.3+0.25*(af>0?1-af:rise));
+  ctx.globalCompositeOperation='source-over';
+  var g=ctx.createLinearGradient(0,-h,0,0);g.addColorStop(0,'#7a3a22');g.addColorStop(1,'#2b130d');
+  ctx.beginPath();ctx.moveTo(-bw,0);ctx.lineTo(-bw*0.22,-h);ctx.lineTo(bw*0.22,-h);ctx.lineTo(bw,0);ctx.closePath();
+  ctx.fillStyle=g;ctx.fill();
+  ctx.lineWidth=2;ctx.strokeStyle='rgba(255,140,50,0.85)';ctx.stroke();
+  ctx.globalCompositeOperation='lighter';
+  ctx.fillStyle='rgba(255,170,60,0.95)';ctx.beginPath();ctx.ellipse(0,-h,bw*0.22,bw*0.07,0,0,TAU);ctx.fill();
+  if(af>0){
+    var fh=e.r*1.4*Math.sin(Math.min(1,af*1.6)*Math.PI*0.5)*(1-af*0.6);
+    ctx.lineCap='round';ctx.strokeStyle='rgba(255,200,110,'+(0.7*(1-af))+')';ctx.lineWidth=Math.max(1,bw*0.3*(1-af*0.5));
+    ctx.beginPath();ctx.moveTo(0,-h);ctx.lineTo(0,-h-fh);ctx.stroke();
+    glow(0,-h-fh*0.5,e.r*0.45,'255,150,50',0.4*(1-af));
+  }
+  ctx.restore();
+}
+function jgMetPos(e){
+  var FD=0.9,tf=e.life-e.t,p=clamp(1-tf/FD,0,1),pe=Math.pow(p,1.6);
+  var tx=(e.track&&e.tgt)?e.tgt.x:e.x,ty=(e.track&&e.tgt)?e.tgt.y:e.y;
+  var dy=BIG?680:clamp(ty+60,160,680),sy=ty-dy,sx=tx-dy*0.36,dl=len(sx-tx,sy-ty)||1;
+  return {tx:tx,ty:ty,p:p,pe:pe,mx:sx+(tx-sx)*pe,my:sy+(ty-sy)*pe,ux:(sx-tx)/dl,uy:(sy-ty)/dl,rm:14+e.r*0.32*pe};
+}
+function jgDrawMetShadow(e){
+  var q=jgMetPos(e);if(q.p<=0)return;
+  ctx.save();ctx.globalAlpha=0.45*q.pe;ctx.fillStyle='#0a0504';
+  ctx.beginPath();ctx.arc(q.tx,q.ty,e.r*(0.3+0.7*q.pe),0,TAU);ctx.fill();ctx.restore();
+}
+function jgDrawMet(e){
+  var q=jgMetPos(e),i;if(q.p<=0)return;
+  var TL=110+260*q.pe,bx=q.mx+q.ux*TL,by=q.my+q.uy*TL;
+  ctx.save();
+  ctx.globalCompositeOperation='lighter';ctx.lineCap='round';
+  ctx.strokeStyle='rgba(255,80,28,0.3)';ctx.lineWidth=q.rm*2.4;ctx.beginPath();ctx.moveTo(q.mx,q.my);ctx.lineTo(bx,by);ctx.stroke();
+  ctx.strokeStyle='rgba(255,170,70,0.5)';ctx.lineWidth=q.rm*1.4;ctx.beginPath();ctx.moveTo(q.mx,q.my);ctx.lineTo(bx,by);ctx.stroke();
+  glow(q.mx,q.my,q.rm*3.2,'255,110,40',0.55);
+  ctx.globalCompositeOperation='source-over';
+  ctx.save();ctx.translate(q.mx,q.my);ctx.rotate(G.time*3);
+  ctx.beginPath();
+  for(i=0;i<10;i++){var ra=i*TAU/10,rr=q.rm*(0.85+0.2*(((i*5)%3)/2));ctx.lineTo(Math.cos(ra)*rr,Math.sin(ra)*rr)}
+  ctx.closePath();ctx.fillStyle='#34170f';ctx.fill();
+  ctx.lineWidth=3;ctx.strokeStyle='rgba(255,150,50,0.95)';ctx.stroke();
+  ctx.strokeStyle='rgba(255,214,120,0.9)';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(-q.rm*0.5,-q.rm*0.15);ctx.lineTo(-q.rm*0.05,q.rm*0.2);ctx.lineTo(q.rm*0.35,-q.rm*0.35);
+  ctx.moveTo(q.rm*0.1,q.rm*0.55);ctx.lineTo(q.rm*0.3,q.rm*0.12);ctx.stroke();
+  ctx.restore();
+  ctx.globalCompositeOperation='lighter';glow(q.mx,q.my,q.rm*1.4,'255,225,160',0.5);
+  ctx.restore();
+}
+/* 개관철위산(蓋棺鉄囲山): 영역을 빙 두른 검은 철위산의 봉우리와, 갈라진 바닥에서 흐르는 용암 */
+var JG_CR=[];
+(function(){var i,j,n=18;for(i=0;i<n;i++){var a=i*TAU/n+(rnd()-.5)*0.22,pts=[];for(j=1;j<=8;j++)pts.push([j/8,a+(rnd()-.5)*0.3]);JG_CR.push(pts)}})();
+var JG_PK=[];
+(function(){for(var i=0;i<28;i++)JG_PK.push(0.7+0.14*((i*7)%5)/4+0.04*((i*3)%2))})();
+function jgDrawDomain(dm,r){
+  var t=G.time,i,j,cx=dm.x,cy=dm.y,fl=dm.flare>0?dm.flare/0.4:0;
+  var cg=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+  cg.addColorStop(0,'rgba(170,46,12,0.94)');cg.addColorStop(0.45,'rgba(84,20,9,0.94)');cg.addColorStop(1,'rgba(20,6,4,0.97)');
+  ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.fill();
+  ctx.save();ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.clip();
+  ctx.globalCompositeOperation='lighter';ctx.lineCap='round';ctx.lineJoin='round';
+  for(i=0;i<JG_CR.length;i++){
+    var pts=JG_CR[i],pl=0.5+0.5*Math.sin(t*2.2+i*1.3);
+    ctx.beginPath();
+    for(j=0;j<pts.length;j++){
+      var rr=r*(0.1+0.8*pts[j][0]),aa=pts[j][1]+0.03*Math.sin(t*0.8+i+j),x=cx+Math.cos(aa)*rr,y=cy+Math.sin(aa)*rr;
+      if(j===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+    }
+    ctx.lineWidth=7;ctx.strokeStyle='rgba(255,90,28,'+(0.1+0.07*pl)+')';ctx.stroke();
+    ctx.lineWidth=2;ctx.strokeStyle='rgba(255,196,96,'+(0.35+0.3*pl)+')';ctx.stroke();
+  }
+  glow(cx,cy,r*0.34,'255,120,40',0.4+0.12*Math.sin(t*3)+fl*0.5);
+  glow(cx,cy,r*0.15,'255,226,150',0.45+fl*0.4);
+  if(fl>0)glow(cx,cy,r,'255,170,80',0.35*fl);
+  /* 철위산: 영역을 둘러싼 검은 봉우리 */
+  var N=JG_PK.length,pa;
+  ctx.globalCompositeOperation='source-over';
+  ctx.beginPath();ctx.arc(cx,cy,r*1.04,0,TAU);
+  for(i=0;i<N;i++){
+    pa=i*TAU/N;
+    var vx=cx+Math.cos(pa)*r*0.96,vy=cy+Math.sin(pa)*r*0.96,qa=pa+TAU/(2*N),qx=cx+Math.cos(qa)*r*JG_PK[i],qy=cy+Math.sin(qa)*r*JG_PK[i];
+    if(i===0)ctx.moveTo(vx,vy);else ctx.lineTo(vx,vy);
+    ctx.lineTo(qx,qy);
+  }
+  ctx.closePath();ctx.fillStyle='#140605';ctx.fill('evenodd');
+  ctx.globalCompositeOperation='lighter';
+  ctx.beginPath();
+  for(i=0;i<N;i++){
+    pa=i*TAU/N;
+    var vx2=cx+Math.cos(pa)*r*0.96,vy2=cy+Math.sin(pa)*r*0.96,qa2=pa+TAU/(2*N),qx2=cx+Math.cos(qa2)*r*JG_PK[i],qy2=cy+Math.sin(qa2)*r*JG_PK[i];
+    if(i===0)ctx.moveTo(vx2,vy2);else ctx.lineTo(vx2,vy2);
+    ctx.lineTo(qx2,qy2);
+  }
+  ctx.closePath();ctx.lineWidth=2;ctx.strokeStyle='rgba(255,130,50,'+(0.4+0.2*Math.sin(t*2)+fl*0.3)+')';ctx.stroke();
+  ctx.restore();
+  ctx.globalCompositeOperation='lighter';
+  ctx.lineWidth=8;ctx.strokeStyle='rgba(255,106,40,0.22)';ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.stroke();
+  ctx.lineWidth=2.5;ctx.strokeStyle='rgba(255,190,120,0.95)';ctx.beginPath();ctx.arc(cx,cy,r,0,TAU);ctx.stroke();
+}
+
 LOGIC.jogo=[
- {cost:0,cd:1.5,run:function(f,o){f.cast={name:'jgcombo',t:0.08,slow:0.5,fn:function(f,o){jgPunch(f,o,135,30,240);later(0.15,function(){if(!f.dead&&!G.over&&f.st.stun<=0)jgPunch(f,o,140,30,240)});later(0.32,function(){if(!f.dead&&!G.over&&f.st.stun<=0)jgPunch(f,o,150,52,640,1)})}}}},
- {cost:34,cd:4.5,tech:true,run:function(f,o){f.cast={name:'jgbomb',t:0.3,slow:0.35,fn:function(f,o){var a=aimDir(f,o,700,leadOf(f));shoot(f,'jfire',a,700,34,115,{life:1.1});G.proj[G.proj.length-1].big=true;ring(f.x,f.y,10,130,'rgba(255,120,40,0.95)',0.4,6);spark(f.x+Math.cos(a)*(f.r+12),f.y+Math.sin(a)*(f.r+12),16,{a:a,spread:0.7,sp:380,c:RGB.orange,life:0.5,size:4,shape:1});push(f,a+Math.PI,160);shake(7)}}}},
- {cost:30,cd:7,tech:true,run:function(f,o){jgSwarm(f,o)}},
+ {cost:0,cd:1.5,run:function(f,o){
+   if(jgAmp(f))f.cd[0]=JG.ampCombo;
+   f.cast={name:'jgcombo',t:0.08,slow:0.5,fn:function(f,o){
+     jgPunch(f,o,135,30,240);
+     later(0.15,function(){if(!f.dead&&!G.over&&f.st.stun<=0)jgPunch(f,o,140,30,240)});
+     later(0.32,function(){if(!f.dead&&!G.over&&f.st.stun<=0)jgPunch(f,o,150,52,640,1)});
+   }};
+ }},
+ {cost:34,cd:4.5,tech:true,run:function(f,o){
+   f.cast={name:'jgbomb',t:0.3,slow:0.35,fn:function(f,o){
+     var a=aimDir(f,o,700,leadOf(f));
+     shoot(f,'jfire',a,700,34,115,{life:1.1});
+     G.proj[G.proj.length-1].big=true;
+     ring(f.x,f.y,10,130,'rgba(255,120,40,0.95)',0.4,6);
+     spark(f.x+Math.cos(a)*(f.r+12),f.y+Math.sin(a)*(f.r+12),16,{a:a,spread:0.7,sp:380,c:RGB.orange,life:0.5,size:4,shape:1});
+     push(f,a+Math.PI,160);shake(7);
+   }};
+ }},
+ {cost:32,cd:7.5,tech:true,run:function(f,o){jgBugs(f,o)}},
  {cost:45,cd:9,tech:true,run:function(f,o){jgErupt(f,o)}},
- {cost:18,cd:6,run:function(f,o){var a=Math.atan2(o.y-f.y,o.x-f.x);pop(f.x,f.y-f.r-30,'화염 돌진','#ffb070',22);push(f,a,1200);ring(f.x,f.y,f.r,f.r+50,'rgba(255,130,50,0.9)',0.3,5);later(0.2,function(){if(f.dead||G.over||f.st.stun>0)return;var oo=other(f);if(len(oo.x-f.x,oo.y-f.y)<f.r+oo.r+70){var d=hit(f,oo,90,{});if(d>0){push(oo,a,500);oo.st.burn=Math.max(oo.st.burn||0,2);ring(oo.x,oo.y,6,90,'rgba(255,130,50,0.95)',0.3,6);spark(oo.x,oo.y,18,{a:a,spread:1.3,sp:360,c:RGB.orange,life:0.4,size:3.5,shape:1})}}})}},
+ {cost:18,cd:6,run:function(f,o){
+   var a=Math.atan2(o.y-f.y,o.x-f.x),amp=jgAmp(f);
+   pop(f.x,f.y-f.r-30,amp?'전연 돌진':'화염 돌진',amp?'#ffe3c0':'#ffb070',22);
+   push(f,a,1200);
+   ring(f.x,f.y,f.r,f.r+50,amp?'rgba(255,236,205,0.9)':'rgba(255,130,50,0.9)',0.3,5);
+   after(f.x,f.y,f.r,amp?'rgba(255,236,205,0.6)':'rgba(255,120,40,0.6)',0.35);
+   later(0.2,function(){
+     if(f.dead||G.over||f.st.stun>0)return;
+     var oo=other(f),am=jgAmp(f);
+     if(len(oo.x-f.x,oo.y-f.y)<f.r+oo.r+70){
+       var d=hit(f,oo,90,{});
+       if(d>0){
+         push(oo,a,500);
+         if(!am)oo.st.burn=Math.max(oo.st.burn||0,2);
+         ring(oo.x,oo.y,6,90,am?'rgba(255,240,210,0.95)':'rgba(255,130,50,0.95)',0.3,6);
+         spark(oo.x,oo.y,18,{a:a,spread:1.3,sp:360,c:am?RGB.white:RGB.orange,life:0.4,size:3.5,shape:1});
+       }
+     }
+   });
+ }},
  {cost:110,cd:26,tech:true,run:function(f,o){jgMeteor(f,o)}},
- {cost:120,cd:55,tech:true,ok:function(f){return G.domain&&G.domain.owner===f?'이미 영역 전개 중':null},run:function(f,o){startDomain(f,o,'coffin')}}
+ {cost:120,cd:55,tech:true,ok:function(f){return G.domain&&G.domain.owner===f?'이미 영역 전개 중':null},run:function(f,o){startDomain(f,o,'coffin')}},
+ {cost:JG.ampCost,cd:JG.ampCd,ok:function(f){return jgAmp(f)?'영역전연 유지 중':null},run:function(f,o){
+   f.st.nullify=Math.max(f.st.nullify,JG.ampT);f.st.amp=JG.ampT;
+   jgAmpFx(f);
+ }}
 ];
 LOGIC.ishigori=[
  {cost:0,cd:1.5,run:function(f,o){
@@ -3158,7 +3558,7 @@ LOGIC.gojos=[
      spark(f.x,f.y,12,{sp:200,c:RGB.ice,life:0.4,size:3,shape:1});
    }
  }},
- {cost:30,cd:11,awkOnly:true,run:function(f){f.st.heal=2.0;f.healRate=96;ring(f.x,f.y,f.r,f.r+50,'rgba(95,227,161,0.9)',0.6,4);spark(f.x,f.y,16,{sp:120,c:RGB.green,life:0.8,size:3,g:-40})}},
+ {cost:30,cd:11,awkOnly:true,run:function(f){f.st.heal=2.0;f.healRate=80;ring(f.x,f.y,f.r,f.r+50,'rgba(95,227,161,0.9)',0.6,4);spark(f.x,f.y,16,{sp:120,c:RGB.green,life:0.8,size:3,g:-40})}},
  {cost:18,cd:6,tech:true,awkOnly:true,run:function(f,o){doRed(f,o,1)}},
  {cost:40,cd:20,tech:true,awkOnly:true,ok:function(f){return f.purpleUsed?'이미 사용함 (1회용)':((f.cd[0]>0||f.cd[5]>0)?'푸른·붉은이 대기 중이어야 함':null)},run:function(f,o){
    f.purpleUsed=true;
@@ -3654,7 +4054,7 @@ LOGIC.yuta0=[
  /* 4 리카 방출 */
  {cost:40,cd:12,ok:yRikaGone,run:function(f){doBeam2(f,{t:0.55,w:56,dmg:120,len:1300})}},
  /* 5 반전 */
- {cost:28,cd:10,run:function(f){yuRct(f);f.st.heal=2.0;f.healRate=66;ring(f.x,f.y,f.r,f.r+50,'rgba(95,227,161,0.9)',0.6,4);spark(f.x,f.y,16,{sp:120,c:RGB.green,life:0.8,size:3,g:-40})}},
+ {cost:28,cd:10,run:function(f){yuRct(f);f.st.heal=2.0;f.healRate=55;ring(f.x,f.y,f.r,f.r+50,'rgba(95,227,161,0.9)',0.6,4);spark(f.x,f.y,16,{sp:120,c:RGB.green,life:0.8,size:3,g:-40})}},
  /* 7 순애빔 (처형: 상대 체력 450 이하) */
  {cost:40,cd:90,ok:function(f,o){
    if(f.limitUsed)return '이미 사용함';
@@ -3709,7 +4109,7 @@ function hakariJackpot(f,o,dm){
   f.ce=f.maxce;
   f.stats.bf++;
   f.cd[5]=was?40:Math.min(f.cd[5],8);
-  if(was){f.hp=Math.min(f.maxhp,f.hp+300);pop(f.x,f.y-f.r-62,'+300','#5fe3a1',26)}
+  if(was){f.hp=Math.min(f.maxhp,f.hp+250);pop(f.x,f.y-f.r-62,'+250','#5fe3a1',26)}
   G.fx.push({k:'reel',x:dm.px,y:dm.py,t:0,life:1.6});
   banner(was?'연속 대박':'잭팟','777 · 주력 무한 · 자동 반전술식','#ffd23f');
   pop(f.x,f.y-f.r-34,'당첨!','#ffd23f',34);
@@ -4325,7 +4725,7 @@ function mhKey(t,key,floor,label){
   return k;
 }
 /* 종합 중첩(법륜 총 횟수)이 selfAt을 넘으면 술식이 아니라 상대 자체에 적응해, 상대마다 다른 쿨타임 패시브가 생긴다 */
-var MG_SFCD={sukuna:3,yuta:8,itadori:5,toji:6,geto:6,naoya:5,mahito:6,hakari:10,nanami:6,ishigori:8};
+var MG_SFCD={sukuna:3,yuta:8,itadori:5,toji:6,geto:6,naoya:5,mahito:6,hakari:10,nanami:6,ishigori:8,jogo:6};
 function mhSelfOn(m,e){return !!(m&&e&&e!==m&&m.id==='megumi'&&m.form===1&&m.rev<=0&&!m.dead&&(m.wheel||0)>MG.selfAt)}
 function mhSelfDef(m,e,dmg,o){ /* 맞을 때 호출: 0을 돌려주면 그 타격을 통째로 무효화 */
   var T=G.time,a=Math.atan2(e.y-m.y,e.x-m.x),cd=m.sfc||(m.sfc={}),kd={gojos:'gojo',getos:'geto',yuta0:'yuta'}[e.id]||e.id,k=1;
@@ -4342,6 +4742,7 @@ function mhSelfDef(m,e,dmg,o){ /* 맞을 때 호출: 0을 돌려주면 그 타�
   else if(kd==='mahito'){m.hp=Math.min(m.maxhp,m.hp+30);e.st.stun=Math.max(e.st.stun,0.4);say('영혼 재정의','#b9f3d0')} /* 마히토: 형태가 아닌 영혼을 다시 정의 */
   else if(kd==='hakari'){e.st.jackpot=0;e.st.riichi=0;say('도박 무효')} /* 하카리: 대박을 승부 자체에서 지운다 */
   else if(kd==='nanami'){e.st.slow=Math.max(e.st.slow,1.5);e.st.slowF=Math.min(e.st.slowF,0.5);say('7:3 비율 교란')} /* 나나미: 약점의 선을 흐트러뜨린다 */
+  else if(kd==='jogo'){m.st.burn=0;e.st.burnout=Math.max(e.st.burnout,1.0);say('열기 적응')} /* 죠고: 불꽃의 열기에 몸이 익고 술식 출력이 흐트러진다 */
   else if(kd==='ishigori'){e.ex=0;say('흥분 진정')} /* 이시고리: 달아오른 투지를 식힌다 */
   return k;
 }
@@ -4593,6 +4994,7 @@ var CHARGES={
 CHARGES.ishigori=[{t:'상해 (우로·쿠로우루시에 대한 포격)',g:0.85},{t:'건조물 손괴·살상 (센다이 콜로니의 무차별 포격)',g:0.7,heavy:true}];
 CHARGES.yuta0=[{t:'상해 (리카가 일으킨 폭행)',g:0.85},{t:'건조물 손괴',g:0.6,heavy:true}];
 CHARGES.getos=[{t:'상해 (술사 포박·심문)',g:0.7},{t:'건조물 손괴',g:0.5,heavy:true}];
+CHARGES.jogo=[{t:'상해 (화염 공격)',g:0.9},{t:'시부야 사변 대량 살인 · 건조물 손괴 (극번 「운」)',g:1,heavy:true}];
 var CH_DEF=[{t:'상해',g:0.8},{t:'살인',g:0.7,heavy:true}];
 var STMT_N={silence:'침묵',deny:'부인',confess:'자백'};
 function chargeList(o){return CHARGES[o.id]||CH_DEF}
@@ -4605,7 +5007,7 @@ function hgGuiltP(dm,st){
   return ev*(0.20+0.80*g)*0.85+((g>0.7&&ev>0.6)?0.18:0);
 }
 function aiStatement(o,dm){
-  if(dm.heavy&&(o.id==='itadori'||o.id==='sukuna'))return 'confess';
+  if(dm.heavy&&(o.id==='itadori'||o.id==='sukuna'||o.id==='jogo'))return 'confess';
   if(o.id==='ishigori'&&G.diff!=='hard'&&rnd()<0.4)return 'confess';
   var g=dm.g,ps=0.6*(0.35+0.65*g),pd=0.6*(0.20+0.80*g)*0.85+((g>0.7)?0.09:0),r=rnd();
   if(G.diff==='hard')return ps<=pd?'silence':'deny';
@@ -4805,7 +5207,7 @@ function trialPick(s){
 }
 (function(){
   var ui=$('#trialUI'),rb=$('#retrialBtn'),bs=ui?ui.querySelectorAll('button'):[],i;
-  for(i=0;i<bs.length;i++)(function(b){b.addEventListener('click',function(e){e.preventDefault();if(G&&G.online&&!G.netHost)mpSend({type:'trial',choice:b.getAttribute('data-s')});else trialPick(b.getAttribute('data-s'))})})(bs[i]);
+  for(i=0;i<bs.length;i++)(function(b){b.addEventListener('click',function(e){e.preventDefault();trialPick(b.getAttribute('data-s'))})})(bs[i]);
   if(rb)rb.addEventListener('click',function(e){e.preventDefault();if(G&&humanDef(G.me))requestRetrial(G.me)});
 })();
 
@@ -4854,7 +5256,7 @@ LOGIC.higuruma=[
    ring(f.x,f.y,f.r+10,f.r+90,'rgba(255,255,255,0.45)',0.6,2);
    pop(f.x,f.y-f.r-30,'영역전연','#9fd8ff',22);
  }},
- {cost:30,cd:10,run:function(f){f.st.heal=2.0;f.healRate=84;ring(f.x,f.y,f.r,f.r+50,'rgba(95,227,161,0.9)',0.6,4);spark(f.x,f.y,16,{sp:120,c:RGB.green,life:0.8,size:3,g:-40})}},
+ {cost:30,cd:10,run:function(f){f.st.heal=2.0;f.healRate=70;ring(f.x,f.y,f.r,f.r+50,'rgba(95,227,161,0.9)',0.6,4);spark(f.x,f.y,16,{sp:120,c:RGB.green,life:0.8,size:3,g:-40})}},
  {cost:10,cd:3.5,run:function(f,o){
    var a=Math.atan2(o.y-f.y,o.x-f.x);
    f.dash={t:0.16,vx:Math.cos(a)*1050,vy:Math.sin(a)*1050,done:false,fn:function(f,o){
@@ -5044,7 +5446,7 @@ DOCS.higuruma={
    '4초 동안 필중 영역 효과를 무효로 하고(간이 영역과 같은 효과) 받는 피해가 30% 줄어듭니다(혼 공격 제외). 쿨타임 12초.',
    '처형인의 검과 동시에 유지할 수 있습니다. 작중에서 스쿠나의 참격을 영역전연으로 약화시키면서 검까지 유지해 스쿠나를 놀라게 한 장면을 옮겼습니다.']},
   {name:'반전술식',jp:'反転術式 · Reverse Cursed Technique',tag:'체술',sum:'스쿠나전 도중 스스로 터득한 회복.',lines:[
-   '2초 동안 초당 84씩 총 168을 회복합니다(이동 40% 감소). 팔이 잘린 뒤 반전술식으로 재생한 설정을 옮겼습니다.',
+   '2초 동안 초당 70씩 총 140을 회복합니다(이동 40% 감소). 팔이 잘린 뒤 반전술식으로 재생한 설정을 옮겼습니다.',
    '술식이 아니라서 술식 번아웃과 무관하게 쓸 수 있습니다.']},
   {name:'강화 돌진',jp:'呪力強化 · Cursed Energy Rush',tag:'체술',sum:'주력으로 몸을 강화해 파고든다.',lines:[
    '0.16초 동안 돌진하며, 닿으면 피해 55와 넉백. 쿨타임 3.5초.',
@@ -5673,7 +6075,7 @@ var DBA={
   pilR:95,pilDmg:[44,52,60,68],pilDelay:0.35,pilRange:400,pilStun:0.2,
   beamN:[5,7,9,12],beamPer:13,beamGap:0.07,beamRange:640,
   subHits:4,subPer:26,subLast:36,subGap:0.09,subRecoil:[45,28,20,15],akT:1.2,
-  rctT:2,rctRate:[0,72,84,96],
+  rctT:2,rctRate:[0,60,70,80],
   darkCast:0.8,darkPulls:5,darkGap:0.16,darkPull:300,darkR:150,darkDmg:[0,0,150,170],darkSlowT:1,darkSlowF:0.6,
   domR:300,domExpand:1,domTick:0.5,domLight:26,domDark:40,domSlowF:0.6,domMast:0.85,
   ropeRange:480,ropeBurn:2.5,ropeStun:0.3
@@ -5872,7 +6274,7 @@ DOCS.dabura={
     '사용 즉시 반동 피해 45 · 28 · 20 · 15(1~4단계, 체력 1 밑으로는 내려가지 않음)를 받고, 상대 주위를 옮겨 다니며 0.09초 간격으로 26 · 26 · 26 · 36의 4연타를 넣습니다. 마지막 타는 강하게 밀어내고 0.25초 기절. 이동 속도 ×1.35가 약 1.6초 유지됩니다. 주력 36, 쿨타임 9초.',
     '원작: 아광속은 다부라 자신도 고통과 손상이 쌓이는 비장의 수였으며, 반전 술식을 익힌 뒤 부담이 줄었습니다. 게임에서는 단계가 오를수록 반동이 줄어듭니다.']},
    {name:'반전 술식',jp:'反転術式 · Reverse Cursed Technique',tag:'술식',sum:'부의 에너지를 정의 에너지로 바꿔 몸을 회복한다.',lines:[
-    '성장 2단계부터 사용합니다. 0.6초 시전 후 2초 동안 초당 72 · 84 · 96(2~4단계)을 회복합니다(합계 144 · 168 · 192). 주력 55, 쿨타임 14초. 혼 절단 같은 회복 불가 효과에는 막힙니다.',
+    '성장 2단계부터 사용합니다. 0.6초 시전 후 2초 동안 초당 60 · 70 · 80(2~4단계)을 회복합니다(합계 120 · 140 · 160). 주력 55, 쿨타임 14초. 혼 절단 같은 회복 불가 효과에는 막힙니다.',
     '원작: 으깨진 다리를 보고, 직접 본 적도 없는 반전 술식을 즉석에서 해석해 다리를 복구했습니다.']},
    {name:'어둠',jp:'術式反転 □ · Dark',tag:'술식',sum:'빛을 반전시킨 어둠. 모든 것을 빨아들인 뒤 무너뜨린다.',lines:[
     '성장 3단계부터 사용합니다. 0.8초 시전 후 상대 위치에 구체를 만들고, 0.16초 간격으로 5번 안쪽으로 끌어당긴 뒤(사거리 이내) 반경 150에 피해 150(3단계) · 170(4단계), 필중, 1초간 40% 감속을 줍니다. 끌려가지 않게 거리를 벌려야 합니다. 주력 75, 쿨타임 13초.',
@@ -5909,6 +6311,7 @@ function tryUse(f,i){
   else if(f.cf&&f.cf.k==='ce'&&(c>0||L.tech))why='몰수: 주력을 쓸 수 없음';
   else if(f.ce<c&&!(f.id==='gojo'&&i<=3))why='주력 부족';
   else if(L.tech&&f.st.burnout>0)why='술식 번아웃';
+  else if(L.tech&&jgAmp(f))why='영역전연 중에는 술식을 쓸 수 없음';
   else if(L.ok)why=L.ok(f,o);
   if(why){if(f.isPlayer&&!G.auto)toast(why);return false}
   f.ce=Math.max(0,f.ce-c);
@@ -5929,7 +6332,7 @@ function aiStep(f,o){
   if(A.sw<=0){A.side=rnd()<.5?-1:1;A.sw=0.7+rnd()*1.5}
   var dx=o.x-f.x,dy=o.y-f.y,d=len(dx,dy)||1,ux=dx/d,uy=dy/d;
   var gj=isGojo(f);
-  var pref=gj?(muGo(f)?225:290):f.id==='kashimo'?(kaAm(f)?95:110):f.id==='dabura'?210:f.id==='nanami'?(o.id==='mahito'?95:105):f.id==='ishigori'?(f.st.guard>0?150:(o.id==='yuta'?230:250)):f.id==='mahito'?(f.form===1?120:140):f.id==='naoya'?(f.form===1?150:110):f.id==='hakari'?115:f.id==='megumi'?(f.form===1?90:200):f.id==='getos'?175:f.id==='higuruma'?(f.sword>0?60:130):(f.id==='geto'?145:(f.id==='toji'?95:f.id==='itadori'?105:(f.id==='yuta'||f.id==='yuta0')?(f.cd[0]<=0.3?100:220):(f.cd[1]<=0.4?110:240)));
+  var pref=gj?(muGo(f)?225:290):f.id==='kashimo'?(kaAm(f)?95:110):f.id==='dabura'?210:f.id==='nanami'?(o.id==='mahito'?95:105):f.id==='ishigori'?(f.st.guard>0?150:(o.id==='yuta'?230:250)):f.id==='mahito'?(f.form===1?120:140):f.id==='naoya'?(f.form===1?150:110):f.id==='hakari'?115:f.id==='megumi'?(f.form===1?90:200):f.id==='getos'?175:f.id==='higuruma'?(f.sword>0?60:130):f.id==='jogo'&&f.st.amp>0?85:(f.id==='geto'?145:(f.id==='toji'?95:f.id==='itadori'?105:(f.id==='yuta'||f.id==='yuta0')?(f.cd[0]<=0.3?100:220):(f.cd[1]<=0.4?110:240)));
   if(f.id==='megumi'&&f.form===1)pref*=msc(f);
   if(o.st.stun>0)pref=gj?210:70;
   if(o.sword>0&&o.deathRow===f&&G.diff!=='easy')pref=Math.max(pref,G.diff==='hard'?340:280); /* HIGURUMA: 처형인의 검을 피하려 거리를 벌림 */
@@ -5985,11 +6388,11 @@ function aiStep(f,o){
 function aiSkills(f,o,d,D){
   var dm=G.domain;
   function R(p){return rnd()<p}
-  if(f.id!=='toji'&&f.id!=='geto'&&f.id!=='getos'&&f.id!=='yuta0'&&f.id!=='hakari'&&f.id!=='naoya'&&f.id!=='mahito'&&f.id!=='ishigori'&&f.id!=='higuruma'&&f.id!=='megumi'&&f.id!=='nanami'&&f.id!=='kashimo'&&f.id!=='dabura'&&dm&&dm.owner===o&&f.st.nullify<=0&&len(f.x-dm.x,f.y-dm.y)<dm.rmax&&dm.age>0.3&&dm.age<dm.expand+0.4){
+  if(f.id!=='toji'&&f.id!=='geto'&&f.id!=='getos'&&f.id!=='yuta0'&&f.id!=='hakari'&&f.id!=='naoya'&&f.id!=='mahito'&&f.id!=='ishigori'&&f.id!=='higuruma'&&f.id!=='megumi'&&f.id!=='nanami'&&f.id!=='kashimo'&&f.id!=='dabura'&&f.id!=='jogo'&&dm&&dm.owner===o&&f.st.nullify<=0&&len(f.x-dm.x,f.y-dm.y)<dm.rmax&&dm.age>0.3&&dm.age<dm.expand+0.4){
     if(f.id==='gojo'&&R(0.25)&&tryUse(f,6))return;
     if(R(D.dodge+0.15)&&tryUse(f,5))return;
   }
-  if(f.id!=='toji'&&f.id!=='geto'&&f.id!=='getos'&&f.id!=='yuta0'&&f.id!=='hakari'&&f.id!=='naoya'&&f.id!=='mahito'&&f.id!=='ishigori'&&f.id!=='higuruma'&&f.id!=='megumi'&&f.id!=='nanami'&&f.id!=='kashimo'&&f.id!=='dabura'&&f.hp/f.maxhp<0.45&&f.st.heal<=0&&R(0.75)&&tryUse(f,4))return;
+  if(f.id!=='toji'&&f.id!=='geto'&&f.id!=='getos'&&f.id!=='yuta0'&&f.id!=='hakari'&&f.id!=='naoya'&&f.id!=='mahito'&&f.id!=='ishigori'&&f.id!=='higuruma'&&f.id!=='megumi'&&f.id!=='nanami'&&f.id!=='kashimo'&&f.id!=='dabura'&&f.id!=='jogo'&&f.hp/f.maxhp<0.45&&f.st.heal<=0&&R(0.75)&&tryUse(f,4))return;
   if(f.id==='gojo'){
     for(var eb=0;eb<G.blues.length;eb++){var bz=G.blues[eb];if(bz.owner===o&&len(f.x-bz.x,f.y-bz.y)<bz.r*0.9&&R(D.dodge)&&tryUse(f,7))return}
     if(o.cast&&(o.cast.name==='wcs'||o.cast.name==='beam')&&o.cast.locked&&R(D.dodge)&&tryUse(f,7))return;
@@ -6132,14 +6535,25 @@ function aiSkills(f,o,d,D){
     if(d>=170&&d<340&&R(0.4)&&tryUse(f,5))return;
     if(d<175&&R(0.9)&&tryUse(f,0))return;
   }else if(f.id==='jogo'){
+    var jamp=jgAmp(f),jdm=G.domain,jtrap=!!(jdm&&jdm.owner===o&&jdm.type!=='trial'&&f.st.nullify<=0&&len(f.x-jdm.x,f.y-jdm.y)<jdm.rmax);
+    if(!jamp&&f.cd[7]<=0&&f.ce>=cost(f,JG.ampCost)){ /* 영역전연: 상대 영역을 막거나 고죠의 무하한을 뚫을 때 */
+      if(jtrap&&jdm.age>0.3&&jdm.age<jdm.expand+0.6&&R(D.dodge+0.2)&&tryUse(f,7))return;
+      if(isGojo(o)&&infActive(o)&&d<300&&R(0.45)&&tryUse(f,7))return;
+    }
     if(!R(D.aggr))return;
+    if(jamp){ /* 영역전연 중에는 술식 없이 주먹과 돌진으로 */
+      if(d<175&&R(0.95)&&tryUse(f,0))return;
+      if(d>=200&&f.ce>=cost(f,18)&&R(0.5)&&tryUse(f,4))return;
+      return;
+    }
     if(!G.domain&&d<340&&f.ce>=cost(f,120)+20&&R(0.5)&&tryUse(f,6))return;
-    if(f.ce>=cost(f,110)+10&&d>=160&&d<620&&R(0.35)&&tryUse(f,5))return;
+    if(f.ce>=cost(f,110)+10&&d>=160&&d<620&&R(jgDomOn(f)?0.8:0.35)&&tryUse(f,5))return;
     if(d>=180&&d<560&&f.ce>=cost(f,45)&&R(0.4)&&tryUse(f,3))return;
-    if(d>=140&&d<560&&f.ce>=cost(f,30)&&R(0.5)&&tryUse(f,2))return;
+    if(d>=140&&d<560&&f.ce>=cost(f,32)&&R(0.5)&&tryUse(f,2))return;
     if(d>=220&&f.ce>=cost(f,18)&&R(0.3)&&tryUse(f,4))return;
     if(d>=150&&d<600&&f.ce>=cost(f,34)&&R(0.5)&&tryUse(f,1))return;
     if(d<170&&R(0.9)&&tryUse(f,0))return;
+    if(d<260&&f.ce>=cost(f,45)&&R(0.3)&&tryUse(f,3))return; /* 붙어 온 상대의 발밑에도 분화를 심는다 */
   }else if(f.id==='ishigori'){
     var iin=0,ji,pi;
     for(ji=0;ji<G.proj.length;ji++){pi=G.proj[ji];if(pi.owner===o&&!pi.dead&&pi.kind!=='purple'&&len(pi.x-f.x,pi.y-f.y)<260)iin++}
@@ -6289,7 +6703,7 @@ function updateFighter(f,input){
   if(s.jackpot>0&&!f.dead){
     f.ce=f.maxce;
     if(s.noheal<=0&&f.hp<f.maxhp){
-      f.hp=Math.min(f.maxhp,f.hp+86.4*DT);
+      f.hp=Math.min(f.maxhp,f.hp+72*DT);
       if(rnd()<0.5)spark(f.x+(rnd()-.5)*f.r*1.6,f.y+f.r*0.6,1,{a:-Math.PI/2,spread:0.5,sp:90,c:RGB.green,life:0.8,size:3,drag:0.5});
     }
     if(rnd()<0.6)spark(f.x+(rnd()-.5)*f.r*1.6,f.y,1,{a:-Math.PI/2,spread:0.6,sp:120,c:rnd()<.5?RGB.pink:RGB.gold,life:0.6,size:3.5,drag:0.4,shape:1});
@@ -6297,6 +6711,7 @@ function updateFighter(f,input){
   }
   if(G.time>90)drain(f,8*DT,null);
   if(f.id==='ishigori')ishUpdate(f,o);
+  if(f.id==='jogo')jgUpdate(f,o);
   if(f.id==='nanami')nmUpdate(f,o);
   if(f.id==='kashimo')kaUpdate(f,o);if(f.id==='dabura')dbUpdate(f,o);
   if(f.ai)aiStep(f,o); else {f.ix=input.x;f.iy=input.y}
@@ -6394,10 +6809,10 @@ function updateProj(){
     if(p.sm&&p.hp<=0){p.dead=true;smDie(p);continue}
     f=p.owner; t=other(f);
     p.sf=1;
-    if((p.kind==='curse'||p.kind==='isomer'||p.kind==='gavel')&&p.life>0.15){
+    if((p.kind==='curse'||p.kind==='isomer'||p.kind==='gavel'||p.kind==='jbug')&&p.life>0.15){
       var ca2=Math.atan2(t.y-p.y,t.x-p.x),pa2=Math.atan2(p.vy,p.vx),df=ca2-pa2,sp2=len(p.vx,p.vy);
       while(df>Math.PI)df-=TAU; while(df<-Math.PI)df+=TAU;
-      var tr=(p.kind==='isomer'?MA.isoTurn:(p.kind==='gavel'?3.4:1.5)),tn=clamp(df,-tr*DT,tr*DT);
+      var tr=(p.kind==='isomer'?MA.isoTurn:(p.kind==='gavel'?3.4:(p.kind==='jbug'?JG.bugTurn:1.5))),tn=clamp(df,-tr*DT,tr*DT);
       p.vx=Math.cos(pa2+tn)*sp2; p.vy=Math.sin(pa2+tn)*sp2;
     }
     if(!p.pierce&&infActive(t)&&len(p.x-t.x,p.y-t.y)<95){
@@ -6439,6 +6854,7 @@ function updateProj(){
     if(p.life<=0){
       if(p.kind==='fuga')explode(p);
       else if(p.kind==='granite')graniteBurst(p,p.x,p.y,false);
+      else if(p.kind==='jbug'){ring(p.x,p.y,4,32,'rgba(255,140,50,0.8)',0.25,3);spark(p.x,p.y,6,{sp:200,c:RGB.orange,life:0.3,size:3,shape:1})}
       else if(p.kind==='purple'){ring(p.x,p.y,10,110,'rgba(185,131,255,0.9)',0.5,5);spark(p.x,p.y,30,{sp:300,c:RGB.purple,life:0.6,size:4,shape:1})}
       p.dead=true;continue;
     }
@@ -6532,6 +6948,8 @@ function updateProj(){
         graniteHit(p,t);p.dead=true;
       }else if(p.kind==='gsmall'){
         gsmallHit(p,t,ang);p.dead=true;
+      }else if(p.kind==='jbug'){
+        jgBugBurst(p,t);p.dead=true;
       }else if(p.kind==='jfire'){
         var dj=hit(f,t,p.dmg,{});
         ring(p.x,p.y,6,p.big?120:56,'rgba(255,120,40,0.95)',0.3,p.big?8:4);spark(p.x,p.y,p.big?26:10,{sp:340,c:RGB.orange,life:0.45,size:3.5,shape:1});
@@ -6687,6 +7105,7 @@ function updateDomain(){
         }
       }
     }else if(dm.type==='coffin'){
+      if(dm.flare>0)dm.flare-=DT;
       if(rnd()<0.8){var ca=rnd()*TAU,cr=dm.rmax*Math.sqrt(rnd());spark(dm.x+Math.cos(ca)*cr,dm.y+Math.sin(ca)*cr,1,{a:-Math.PI/2,spread:0.5,sp:110,c:rnd()<.5?RGB.orange:RGB.gold,life:0.9,size:3.5,drag:0.3,g:-22})}
       dm.tick-=DT;
       if(dm.tick<=0){
@@ -6696,7 +7115,7 @@ function updateDomain(){
           drain(o,cdm,co);o.st.flash=0.06;o.st.burn=Math.max(o.st.burn||0,2);
           ring(o.x,o.y,6,cb?150:70,'rgba(255,106,40,0.9)',0.3,cb?8:4);
           spark(o.x,o.y,cb?24:8,{a:-Math.PI/2,spread:1.2,sp:340,c:RGB.orange,life:0.5,size:4,shape:1});
-          if(cb){push(o,Math.atan2(o.y-co.y,o.x-co.x),380);pop(o.x,o.y-o.r-12,String(Math.round(cdm)),'#ffb070',24);shake(8)}
+          if(cb){push(o,Math.atan2(o.y-co.y,o.x-co.x),380);pop(o.x,o.y-o.r-12,String(Math.round(cdm)),'#ffb070',24);shake(8);dm.flare=0.4;G.fx.push({k:'jgvolc',x:o.x,y:o.y,r:JG.eruR*0.8,t:0,life:0.9,w:0.12});co.stats.bf++;if(BIG)cityDamage(o.x,o.y,90,260)}
         }
       }
     }else if(dm.type==='feast'){
@@ -6799,7 +7218,7 @@ function separate(){
     b.x=clamp(b.x+nx*pu,b.r,W-b.r);b.y=clamp(b.y+ny*pu,b.r,H-b.r);
   }
 }
-function step(inp,inpFoe){
+function step(inp){
   if(G.count>0){G.count-=DT;updateFx();rikaIntro(G.me);rikaIntro(G.foe);return}
   if(G.over){
     G.overT+=DT;updateFx();
@@ -6809,7 +7228,7 @@ function step(inp,inpFoe){
   if(G.freeze>0){G.freeze--;return}
   G.time+=DT;
   updateFighter(G.me,inp);
-  updateFighter(G.foe,inpFoe||{x:0,y:0});
+  updateFighter(G.foe,inp);
   if(G.me.todo)updateTodo(G.me);if(G.foe.todo)updateTodo(G.foe);
   separate();
   updateBlues();updateProj();updateFlies();updateDomain();retrialAI();updateTimers();updateFx();
@@ -6860,6 +7279,7 @@ function drawShrine(cx,cy,s,a){
   ctx.restore();
 }
 function drawDomain(){
+  jgDrawGround();
   if(G.domain)drawDom(G.domain);
   if(G.clash){
     drawDom(G.clash.b);
@@ -7029,12 +7449,7 @@ function drawDom(dm){
     ctx.lineWidth=8;ctx.strokeStyle='rgba(95,208,196,0.22)';ctx.beginPath();ctx.arc(dm.x,dm.y,r,0,TAU);ctx.stroke();
     ctx.lineWidth=2.5;ctx.strokeStyle='rgba(190,255,248,0.95)';ctx.beginPath();ctx.arc(dm.x,dm.y,r,0,TAU);ctx.stroke();
   }else if(dm.type==='coffin'){
-    var cg=ctx.createRadialGradient(dm.x,dm.y,0,dm.x,dm.y,r);
-    cg.addColorStop(0,'rgba(120,28,8,0.92)');cg.addColorStop(0.7,'rgba(58,12,6,0.93)');cg.addColorStop(1,'rgba(22,6,4,0.96)');
-    ctx.fillStyle=cg;ctx.beginPath();ctx.arc(dm.x,dm.y,r,0,TAU);ctx.fill();
-    ctx.save();ctx.beginPath();ctx.arc(dm.x,dm.y,r,0,TAU);ctx.clip();ctx.globalCompositeOperation='lighter';
-    for(q=0;q<9;q++){glow(dm.x+Math.cos(q*TAU/9+G.time*0.2)*r*0.55,dm.y+Math.sin(q*TAU/9+G.time*0.2)*r*0.55,r*0.28+Math.sin(G.time*3+q)*8,'255,110,40',0.28)}
-    ctx.restore();
+    jgDrawDomain(dm,r);
   }else if(dm.type==='feast'){
     var fg=ctx.createRadialGradient(dm.x,dm.y,0,dm.x,dm.y,r);
     fg.addColorStop(0,'rgba(14,32,70,0.9)');fg.addColorStop(0.7,'rgba(8,18,44,0.92)');fg.addColorStop(1,'rgba(4,10,28,0.95)');
@@ -7610,7 +8025,7 @@ function drawFighter(f){
   if(f.rev>0)ctx.globalAlpha=(f.revType==='death'&&!f.revSwap)?0.45:0.7+0.25*Math.sin(G.time*30);
   if(f.id==='megumi'&&s.hide>0)ctx.globalAlpha=0.4;
   ctx.save();ctx.globalCompositeOperation='lighter';
-  glow(0,0,f.r*2.4,f.id==='dabura'?'255,232,150':f.id==='kashimo'?RGB.cyan:f.id==='nanami'?RGB.gold:f.id==='hakari'?RGB.pink:f.id==='ishigori'?RGB.ish:isGojo(f)?RGB.ice:((f.id==='geto'||f.id==='getos')?RGB.purple:(f.id==='yuta'?'169,184,255':f.id==='yuta0'?RGB.pink:(f.id==='itadori'?RGB.orange:(f.id==='megumi'?(f.form===1?RGB.gold:'111,143,232'):(f.id==='toji'?RGB.green:(f.id==='naoya'?RGB.naoya:(f.id==='mahito'?RGB.mahito:(f.id==='higuruma'?RGB.gold:RGB.crim)))))))),s.zone>0?0.34:0.16);
+  glow(0,0,f.r*2.4,f.id==='dabura'?'255,232,150':f.id==='kashimo'?RGB.cyan:f.id==='nanami'?RGB.gold:f.id==='hakari'?RGB.pink:f.id==='ishigori'?RGB.ish:f.id==='jogo'?RGB.orange:isGojo(f)?RGB.ice:((f.id==='geto'||f.id==='getos')?RGB.purple:(f.id==='yuta'?'169,184,255':f.id==='yuta0'?RGB.pink:(f.id==='itadori'?RGB.orange:(f.id==='megumi'?(f.form===1?RGB.gold:'111,143,232'):(f.id==='toji'?RGB.green:(f.id==='naoya'?RGB.naoya:(f.id==='mahito'?RGB.mahito:(f.id==='higuruma'?RGB.gold:RGB.crim)))))))),s.zone>0?0.34:0.16);
   if(isGojo(f)){
     ctx.beginPath();ctx.arc(0,0,95,0,TAU);ctx.setLineDash([5,8]);ctx.lineWidth=2;
     ctx.strokeStyle=(s.infOff>0||f.infMan)?'rgba(255,255,255,0.06)':(s.nullify>0?'rgba(140,220,255,0.7)':'rgba(108,196,255,0.26)');
@@ -7665,6 +8080,7 @@ function drawFighter(f){
     }
   }
   if(f.id==='ishigori')drawIshAura(f);
+  if(f.id==='jogo')drawJgAura(f);
   if(f.id==='nanami')drawNmAura(f);
   if(f.id==='naoya')drawNaoyaAura(f);
   if(f.id==='mahito')drawMahitoAura(f);
@@ -7800,16 +8216,7 @@ function drawFighter(f){
       ctx.stroke();
     }
   }
-  else if(f.id==='jogo'){
-    var jr=f.r;
-    ctx.fillStyle='#e8501c';ctx.fillRect(-jr,-jr,jr*2,jr*0.8);
-    ctx.fillStyle='#4a1a12';ctx.fillRect(-jr,jr*0.1,jr*2,jr*1.2);
-    ctx.strokeStyle='#ffd36a';ctx.lineWidth=2;ctx.lineCap='round';
-    ctx.beginPath();ctx.moveTo(-jr*0.5,-jr*0.7);ctx.lineTo(-jr*0.2,-jr*0.2);ctx.moveTo(jr*0.45,-jr*0.75);ctx.lineTo(jr*0.15,-jr*0.25);ctx.stroke();
-    ctx.strokeStyle='#fff3d0';ctx.lineWidth=3;
-    ctx.beginPath();ctx.moveTo(-jr*0.6,jr*0.02);ctx.lineTo(-jr*0.18,jr*0.14);ctx.moveTo(jr*0.6,jr*0.02);ctx.lineTo(jr*0.18,jr*0.14);ctx.stroke();
-    ctx.strokeStyle='#14100c';ctx.beginPath();ctx.moveTo(-jr*0.35,jr*0.5);ctx.lineTo(jr*0.35,jr*0.5);ctx.stroke();
-  }
+  else if(f.id==='jogo'){drawJgFace(f)}
   else if(f.id==='ishigori'){
     var ir=f.r;
     ctx.fillStyle='#2a1b14';ctx.fillRect(-ir,-ir,ir*2,ir*0.78);
@@ -7897,7 +8304,7 @@ function drawFighter(f){
   var tags=[];
   if(s.stun>0)tags.push('기절'); if(s.burnout>0)tags.push('번아웃'); if(s.parry>0)tags.push('받아치기'); if(s.infOff>0)tags.push('무하한 OFF'); else if(f.infMan)tags.push('무하한 해제');
   if(s.jackpot>0)tags.push('대박 '+Math.ceil(s.jackpot)+'초'); if(s.riichi>0)tags.push('리치');
-  if(f.awk&&f.id==='gojos')tags.push('각성'); if(s.awI>0)tags.push('무적'); if(s.zone>0)tags.push('존'); if(s.hide>0)tags.push('은신'); if(s.noheal>0)tags.push('회복불가'); if(s.rika>0)tags.push('리카'); if(s.burn>0)tags.push('화염'); if(s.nullify>0)tags.push(isGojo(f)?'증폭':'간이');
+  if(f.awk&&f.id==='gojos')tags.push('각성'); if(s.awI>0)tags.push('무적'); if(s.zone>0)tags.push('존'); if(s.hide>0)tags.push('은신'); if(s.noheal>0)tags.push('회복불가'); if(s.rika>0)tags.push('리카'); if(s.burn>0)tags.push('화염'); if(s.nullify>0&&!(f.id==='jogo'&&s.amp>0))tags.push(isGojo(f)?'증폭':'간이');
   if(s.deform>0)tags.push('변형');
   if(f.id==='dabura'&&f.db)tags.push('성장 '+f.db.sg+'단계'+(f.db.ak>0?' · 아광속':''));if(f.id==='kashimo'&&f.ka){if(f.ka.am===1)tags.push('환수 호박 '+Math.max(0,Math.ceil(f.ka.t))+'초');else if(f.ka.am===2)tags.push('육체 붕괴')} if(s.nmg>0)tags.push('대철 방어'); if(f.id==='nanami'&&f.nm){var N0=f.nm;tags.push(N0.ot===1?'시간 외':(N0.ot===2?'규칙 위반':'근무 '+Math.max(0,Math.ceil(NM.work-N0.work))+'초'));if(N0.wp>0)tags.push('약점 7:3');if(N0.chain>0)tags.push('흑섬 '+N0.chain+'연속')} if(s.guard>0)tags.push('손막이'); if(f.id==='ishigori'&&f.ex>0)tags.push('고양 '+f.ex); 
   if(f.todo&&s.tg>0)tags.push('토도 회피');
@@ -7913,7 +8320,8 @@ function drawFighter(f){
   }
   if(tags.length){ctx.font='500 17px '+FB;ctx.fillStyle='#ffcf5e';ctx.fillText(tags.join(' · '),0,f.r+52)}
   if(f.isPlayer&&!G.auto){
-    ctx.beginPath();ctx.moveTo(0,-f.r-24);ctx.lineTo(-8,-f.r-36);ctx.lineTo(8,-f.r-36);ctx.closePath();
+    var mko=f.id==='jogo'?58:0; /* 죠고는 머리 위 불꽃과 겹치지 않게 */
+    ctx.beginPath();ctx.moveTo(0,-f.r-24-mko);ctx.lineTo(-8,-f.r-36-mko);ctx.lineTo(8,-f.r-36-mko);ctx.closePath();
     ctx.fillStyle='#fff';ctx.fill();
   }
   ctx.restore();
@@ -7932,7 +8340,26 @@ function drawProj(){
   for(i=0;i<G.proj.length;i++){
     var p=G.proj[i],ang=Math.atan2(p.vy,p.vx);
     if(p.kind==='bullet'){ctx.save();ctx.globalCompositeOperation='lighter';drawTrail(p,'255,226,150',4,0.8);glow(p.x,p.y,10,'255,240,200',0.9);ctx.restore();continue}
-    if(p.kind==='jfire'){ctx.save();ctx.globalCompositeOperation='lighter';drawTrail(p,'255,120,40',p.r*1.8,0.6);glow(p.x,p.y,p.r*3,'255,150,60',0.7);glow(p.x,p.y,p.r*1.4,'255,235,170',0.9);ctx.restore();continue}
+    if(p.kind==='jfire'){
+      ctx.save();ctx.globalCompositeOperation='lighter';drawTrail(p,'255,120,40',p.r*1.8,0.6);glow(p.x,p.y,p.r*3,'255,150,60',0.7);ctx.restore();
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(G.time*(p.big?7:11)+i);
+      ctx.beginPath();for(j=0;j<9;j++){var jra=j*TAU/9,jrr=p.r*(0.78+0.26*(((j*5)%4)/3));ctx.lineTo(Math.cos(jra)*jrr,Math.sin(jra)*jrr)}ctx.closePath();
+      ctx.fillStyle='#3a190f';ctx.fill();ctx.lineWidth=2;ctx.strokeStyle='rgba(255,150,50,0.95)';ctx.stroke();
+      ctx.strokeStyle='rgba(255,214,120,0.9)';ctx.lineWidth=1.6;ctx.lineCap='round';
+      ctx.beginPath();ctx.moveTo(-p.r*0.5,-p.r*0.1);ctx.lineTo(-p.r*0.05,p.r*0.2);ctx.lineTo(p.r*0.4,-p.r*0.3);ctx.moveTo(p.r*0.05,p.r*0.5);ctx.lineTo(p.r*0.25,p.r*0.1);ctx.stroke();
+      ctx.restore();
+      ctx.save();ctx.globalCompositeOperation='lighter';glow(p.x,p.y,p.r*1.2,'255,225,160',0.5);ctx.restore();
+      continue}
+    if(p.kind==='jbug'){
+      var jfl=Math.sin(G.time*38+(p.ph||0)),jwa=0.9+0.5*jfl;
+      ctx.save();ctx.globalCompositeOperation='lighter';drawTrail(p,'255,150,60',p.r*1.2,0.45);glow(p.x,p.y,p.r*2.4,'255,140,50',0.55);ctx.restore();
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(ang);
+      ctx.fillStyle='rgba(255,222,170,0.8)';
+      for(var jwk=-1;jwk<=1;jwk+=2){ctx.save();ctx.rotate(jwk*jwa);ctx.beginPath();ctx.ellipse(-p.r*0.6,0,p.r*1.6,p.r*0.5,0,0,TAU);ctx.fill();ctx.restore()}
+      ctx.fillStyle='#2a120c';ctx.beginPath();ctx.ellipse(0,0,p.r*1.05,p.r*0.6,0,0,TAU);ctx.fill();
+      ctx.fillStyle='rgba(255,170,70,0.95)';ctx.beginPath();ctx.arc(p.r*0.7,0,p.r*0.34,0,TAU);ctx.fill();
+      ctx.restore();
+      continue}
     if(p.kind==='granite'||p.kind==='gsmall'){
       var gbig=!!p.big,gsm=p.kind==='gsmall',gcl=p.reflected?'201,184,255':'74,168,255',gfill=p.reflected?'rgba(201,184,255,0.92)':'rgba(90,175,255,0.92)';
       ctx.save();ctx.globalCompositeOperation='lighter';
@@ -8123,6 +8550,8 @@ function drawFx(){
       ctx.textAlign='center';ctx.font='700 '+e.size+'px '+FB;
       ctx.lineWidth=5;ctx.strokeStyle='rgba(8,10,14,0.85)';ctx.strokeText(e.text,e.x,e.y);
       ctx.fillStyle=e.color;ctx.fillText(e.text,e.x,e.y);
+    }else if(e.k==='jgmet'){
+      jgDrawMet(e);
     }else if(e.k==='mgnue'){
       mgDrawNueFx(e);
     }else if(e.k==='mgele'){
@@ -8465,6 +8894,11 @@ function hudUpdate(){
     b.style.setProperty('--cd',(G.me.cd[j]>0?G.me.cd[j]/L.cd:0).toFixed(3));
     b.classList.toggle('lack',G.me.ce<cost(G.me,L.cost)&&!(G.me.id==='gojo'&&j<=3));
   }
+  if(G.me.id==='jogo'){
+    var jab=btns[7]&&btns[7].querySelector('b'),jam=G.me.st.amp>0,jat=jam?'전연 '+Math.ceil(G.me.st.amp)+'초':BTN_LABEL.jogo[7];
+    if(jab&&jab.textContent!==jat)jab.textContent=jat;
+    if(jam){var jl=[1,2,3,5,6];for(var jk=0;jk<jl.length;jk++)if(btns[jl[jk]])btns[jl[jk]].classList.add('lack')} /* 영역전연 중에는 술식 버튼 잠김 */
+  }
   if(G.me.id==='naoya'){
     var nlb=BTN_LABEL[G.me.form===1?'naoyaC':'naoya'],ncl=BTN_COLOR[G.me.form===1?'naoyaC':'naoya'];
     for(var nj=0;nj<btns.length;nj++){
@@ -8554,7 +8988,7 @@ function buildButtons(){
     (function(idx,btn){
       btn.addEventListener('pointerdown',function(e){
         e.preventDefault();
-        if(G&&!G.paused&&!G.auto){if(G.online&&!G.netHost)mpSend({type:'skill',index:idx});else tryUse(G.me,idx);btn.classList.add('on');setTimeout(function(){btn.classList.remove('on')},110)}
+        if(G&&!G.paused&&!G.auto){tryUse(G.me,idx);btn.classList.add('on');setTimeout(function(){btn.classList.remove('on')},110)}
       });
     })(i,b);
     host.appendChild(b);btns.push(b);
@@ -8578,7 +9012,7 @@ joy.addEventListener('pointercancel',joyEnd);
 window.addEventListener('keydown',function(e){
   var k=e.key.toLowerCase();
   if(G&&!$('#fight').hidden){
-    if(k>='1'&&k<='9'){if(!G.paused&&!G.auto){if(G.online&&!G.netHost)mpSend({type:'skill',index:parseInt(k,10)-1});else tryUse(G.me,parseInt(k,10)-1)}e.preventDefault();return}
+    if(k>='1'&&k<='9'){if(!G.paused&&!G.auto)tryUse(G.me,parseInt(k,10)-1);e.preventDefault();return}
     if(k==='t'){toggleTodo();e.preventDefault();return}
     if(k==='p'||k==='escape'){togglePause();return}
     if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].indexOf(k)>=0)e.preventDefault();
@@ -8646,8 +9080,8 @@ function renderSelect(){
   var ids=['gojo','gojos','getos','geto','hakari','sukuna','yuta','yuta0','itadori','toji','naoya','mahito','higuruma','ishigori','jogo','megumi','nanami','kashimo','dabura'];
   for(i=0;i<ids.length;i++){
     var id=ids[i],C=CH[id],on=id===me,isFoe=id===foe;
-    var EN={gojo:"Satoru Gojo",gojos:"Young Satoru Gojo",getos:"Young Suguru Geto",geto:"Suguru Geto",hakari:"Kinji Hakari",sukuna:"Ryomen Sukuna",yuta:"Yuta Okkotsu",yuta0:"Yuta Okkotsu (JJK 0)",itadori:"Yuji Itadori",toji:"Toji Fushiguro",naoya:"Naoya Zenin",mahito:"Mahito",higuruma:"Hiromi Higuruma",ishigori:"Ryu Ishigori",jogo:"Jogo",megumi:"Megumi Fushiguro",nanami:"Kento Nanami",kashimo:"Hajime Kashimo",dabura:"Dabura Karaba"};
-    h+='<button type="button" class="pick" data-id="'+id+'" aria-pressed="'+on+'"><div class="token '+id+'" style="--c:'+C.color+'"></div><div class="nm">'+C.name+'</div><div class="en">'+EN[id]+'</div><div class="jp">'+C.jp+'</div><span class="role">'+(on?(sel.auto?'1P':'내 캐릭터'):(isFoe?(sel.auto?'2P':'상대'):'대기'))+'</span></button>';
+    var enNames={gojo:'Satoru Gojo',sukuna:'Ryomen Sukuna',yuta:'Yuta Okkotsu',itadori:'Yuji Itadori',toji:'Toji Fushiguro',gojos:'Satoru Gojo (Hidden Inventory)',geto:'Suguru Geto',yuta0:'Yuta Okkotsu (JJK 0)',getos:'Suguru Geto (Hidden Inventory)',hakari:'Kinji Hakari',naoya:'Naoya Zenin',megumi:'Megumi Fushiguro',nanami:'Kento Nanami',mahito:'Mahito',ishigori:'Ryu Ishigori',jogo:'Jogo',higuruma:'Hiromi Higuruma',kashimo:'Hajime Kashimo',dabura:'Dabura Karaba'};
+    h+='<button type="button" class="pick" data-id="'+id+'" aria-pressed="'+on+'"><div class="token '+id+'" style="--c:'+C.color+'"></div><div class="nm">'+C.name+'<small class="en">'+(enNames[id]||id)+'</small></div><div class="jp">'+C.jp+'</div><span class="role">'+(on?(sel.auto?'1P':'내 캐릭터'):(isFoe?(sel.auto?'2P':'상대'):'대기'))+'</span></button>';
   }
   duel.innerHTML=h;
   var pk=duel.querySelectorAll('.pick');
@@ -8702,8 +9136,6 @@ function renderSelect(){
 
 /* ---------- 전투 시작 / 종료 ---------- */
 function startGame(){
-  if(NET.role==='host'){if(NET.peerChar)mpStartHost();else mpStatus('먼저 친구가 방 코드 또는 초대 링크로 입장해야 합니다.');return}
-  if(NET.role==='guest'){mpSend({type:'ready',character:sel.id});mpStatus('호스트가 대전을 시작하기를 기다리는 중입니다.');return}
   newGame(sel.id,sel.diff,{foe:foeIdOf(sel.id),auto:sel.auto,big:sel.big});
   $('#select').hidden=true;$('#fight').hidden=false;$('#ov').hidden=true;
   setupHud(hudMe,G.me);setupHud(hudFoe,G.foe);
@@ -8725,7 +9157,7 @@ function showEnd(){
   var col=w?CH[w.id].color:'#e8ecf4';
   var mm=Math.floor(G.time/60),ss=Math.floor(G.time%60);
   var h='<h2 style="color:'+col+'">'+(w?(G.auto?CH[w.id].short+' 승리':(win?'승리':'패배')):'무승부')+'</h2><p>'+(w?CH[w.id].name+'의 승리':'둘 다 쓰러졌습니다')+'</p>';
-  h+=G.auto?'<div class="res"><div><b>'+mm+':'+(ss<10?'0':'')+ss+'</b><span>전투 시간</span></div><div><b>'+Math.round(G.me.stats.dealt)+'</b><span>1P 준 피해</span></div><div><b>'+Math.round(G.foe.stats.dealt)+'</b><span>2P 준 피해</span></div></div>':'<div class="res"><div><b>'+mm+':'+(ss<10?'0':'')+ss+'</b><span>전투 시간</span></div><div><b>'+Math.round(G.me.stats.dealt)+'</b><span>준 피해</span></div><div><b>'+G.me.stats.bf+'</b><span>'+(G.me.id==='mahito'?'무위전변 적중':G.me.id==='naoya'?'프레임 고정':G.me.id==='toji'?'천역모 적중':G.me.id==='yuta0'?'저주언 적중':G.me.id==='getos'?'소환 주령 적중':(G.me.id==='geto'?'받아치기 성공':(G.me.id==='hakari'?'대박 횟수':'흑섬 성공')))+'</span></div></div>';
+  h+=G.auto?'<div class="res"><div><b>'+mm+':'+(ss<10?'0':'')+ss+'</b><span>전투 시간</span></div><div><b>'+Math.round(G.me.stats.dealt)+'</b><span>1P 준 피해</span></div><div><b>'+Math.round(G.foe.stats.dealt)+'</b><span>2P 준 피해</span></div></div>':'<div class="res"><div><b>'+mm+':'+(ss<10?'0':'')+ss+'</b><span>전투 시간</span></div><div><b>'+Math.round(G.me.stats.dealt)+'</b><span>준 피해</span></div><div><b>'+G.me.stats.bf+'</b><span>'+(G.me.id==='mahito'?'무위전변 적중':G.me.id==='naoya'?'프레임 고정':G.me.id==='toji'?'천역모 적중':G.me.id==='yuta0'?'저주언 적중':G.me.id==='getos'?'소환 주령 적중':(G.me.id==='geto'?'받아치기 성공':(G.me.id==='hakari'?'대박 횟수':(G.me.id==='jogo'?'술식 적중':'흑섬 성공'))))+'</span></div></div>';
   var scT=sceneEnd();if(scT)h+='<p class="scn">'+scT+'</p>';
   h+='<div class="row"><button class="btn p" id="ovAgain" type="button">다시 대결</button><button class="btn" id="ovBack" type="button">캐릭터 선택</button></div>';
   $('#ovBody').innerHTML=h;$('#ov').hidden=false;
@@ -8744,14 +9176,6 @@ function togglePause(){
   }else $('#ov').hidden=true;
 }
 $('#btnPause').addEventListener('click',togglePause);
-$('#singleMode').addEventListener('click',function(){
-  /* Leave any pending online lobby and explicitly select local 1P vs AI. */
-  NET.role=null;NET.peerChar=null;NET.starting=false;NET.connected=false;
-  sel.auto=false;safeSet('sjk_auto','0');
-  renderSelect();
-  $('#mpStatus').textContent='1인 모드 선택됨 · 캐릭터와 상대 AI 난이도를 고른 뒤 전투 시작을 누르세요.';
-  $('#duel').scrollIntoView({behavior:'smooth',block:'start'});
-});
 $('#btnStart').addEventListener('click',startGame);
 document.addEventListener('visibilitychange',function(){if(document.hidden&&G&&!G.paused&&!G.over&&G.count<=0)togglePause()});
 
@@ -8761,19 +9185,10 @@ function frame(ts){
   requestAnimationFrame(frame);
   var dt=Math.min(0.05,(ts-last)/1000||0);last=ts;
   if(!G||$('#fight').hidden)return;
-  if(G.online&&!G.netHost){
-    var now=Date.now();if(NET.connected&&now-NET.lastInputAt>45){NET.lastInputAt=now;mpSend({type:'input',input:inputVec()})}
-    /* Smooth the two fighter positions between incoming snapshots (about 18 per second). */
-    if(NET.smoothTargets&&G.me&&G.foe){
-      var blend=Math.min(1,dt*14),st=NET.smoothTargets;
-      G.me.x+=(st.me.x-G.me.x)*blend;G.me.y+=(st.me.y-G.me.y)*blend;
-      G.foe.x+=(st.foe.x-G.foe.x)*blend;G.foe.y+=(st.foe.y-G.foe.y)*blend;
-    }
-  }else if(!G.paused){
+  if(!G.paused){
     acc+=dt;
     var inp=inputVec();
-    while(acc>=DT){step(inp,(G.online&&G.netHost)?NET.remoteInput:undefined);acc-=DT}
-    if(G.online&&G.netHost&&NET.connected&&Date.now()-NET.lastSnapshotAt>55){NET.lastSnapshotAt=Date.now();try{mpSend({type:'snapshot',state:mpPack(G)})}catch(e){}}
+    while(acc>=DT){step(inp);acc-=DT}
   }
   render();hudUpdate();todoBtnUpdate();trialUiUpdate();
 }
@@ -8781,7 +9196,6 @@ if(document.fonts&&document.fonts.load){
   try{document.fonts.load('40px "Black Han Sans"');document.fonts.load('700 20px "Noto Sans KR"')}catch(e){}
 }
 renderSelect();
-mpInit();
 requestAnimationFrame(frame);
 
 window.__sim={MG:MG,mgGarden:mgGarden,render:render,newGame:newGame,step:step,get:function(){return G},tryUse:tryUse,CH:CH,LOGIC:LOGIC,DIFF:DIFF,drain:drain,hit:hit,lg:lg,NA:NA,MA:MA,startDomain:startDomain,HG:HG,CHARGES:CHARGES,requestRetrial:requestRetrial,canRetrial:canRetrial,trialPick:trialPick};
