@@ -2,9 +2,16 @@
   "name": "shinjuku-showdown-online",
   "version": "1.0.0",
   "private": true,
-  "description": "Online room server for the Shinjuku Showdown HTML fighting simulator",
+  "description": "신주쿠 결전 시뮬레이터 온라인 대전 서버",
   "main": "server.js",
-  "scripts": { "start": "node server.js" },
-  "engines": { "node": ">=18" },
-  "dependencies": { "express": "^4.21.2", "ws": "^8.18.0" }
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  }
 }

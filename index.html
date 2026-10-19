@@ -281,6 +281,14 @@ h1 .db{color:var(--dabura)}
         <h1><span class="g">고죠</span><span class="v">·</span><span class="s">스쿠나</span><span class="v">·</span><span class="y">유타</span><span class="v">·</span><span class="y0">0 유타</span><span class="v">·</span><span class="i">이타도리</span><span class="v">·</span><span class="t">토우지</span><span class="v">·</span><span class="gs">회옥 고죠</span><span class="v">·</span><span class="gk">회옥 게토</span><span class="v">·</span><span class="ge">게토</span><span class="v">·</span><span class="ha">하카리</span><span class="v">·</span><span class="na">나오야</span><span class="v">·</span><span class="ma">마히토</span><span class="v">·</span><span class="hi">히구루마</span><span class="v">·</span><span class="ig">이시고리</span><span class="v">·</span><span class="nm">나나미</span></h1>
         <p class="lead">신주쿠 결전 시점의 네 사람에 천여주박의 술사 킬러 토우지, 그리고 반전술식을 아직 쓰지 못하지만 죽음 직전에 각성하는 회옥 고죠, 성질이 다른 주령 여러 종을 번갈아 부리는 회옥 게토, 주술회전 0 시점의 게토 스구루와 옷코츠 유타, 영역 안의 슬롯으로 대박을 노리는 도박꾼 하카리 킨지, 죽으면 주령으로 되살아나는 젠인가의 속도광 젠인 나오야, 체력이 절반이 되면 변태해 편살즉영체가 되는 특급 주령 마히토, 법정을 펼쳐 상대의 죄를 심판하는 변호사 히구루마 히로미, 400년 만에 현대로 되살아나 주력 출력이 가장 높은 이시고리 류, 7:3의 약점을 만들어 내는 1급 술사 나나미 켄토를 더해, 원 하나로 줄인 1대1 대전입니다. 캐릭터를 고르면 상대가 자동으로 정해지고, 원하면 바꿀 수 있습니다. 직접 조종하는 대신 두 캐릭터의 AI 대결을 관전할 수도 있습니다. 수치는 원작 설정을 게임용으로 단순화한 값입니다.</p>
       </header>
+      <button type="button" id="singleMode" class="btn p" style="width:100%;padding:13px;font-weight:800">1인 모드 · AI와 대전</button>
+      <p style="margin:-10px 0 0;color:var(--mute);font-size:12px">혼자 캐릭터를 조종해 AI 상대와 대전합니다. 온라인 대전은 아래에서 방을 만들거나 친구의 방 코드로 입장하세요.</p>
+      <section id="mpLobby" style="border:1px solid var(--line);border-radius:14px;padding:12px;background:var(--panel);display:grid;gap:9px">
+        <div style="font:700 14px var(--f-body)">온라인 대전 · 친구 초대</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button type="button" class="btn p" id="mpCreate">방 만들기</button><button type="button" class="btn" id="mpCopy" disabled>초대 링크 복사</button></div>
+        <div style="display:flex;gap:8px"><input id="mpCode" maxlength="6" placeholder="방 코드 6자리" autocomplete="off" style="min-width:0;flex:1;border:1px solid var(--line);border-radius:9px;background:var(--ink);color:var(--fg);padding:10px;text-transform:uppercase"><button type="button" class="btn" id="mpJoin">코드로 입장</button></div>
+        <div id="mpStatus" style="font-size:12px;color:var(--mute)">방을 만들거나 친구의 코드/초대 링크로 입장하세요. 온라인 대전은 서버 실행이 필요합니다.</div>
+      </section>
       <div class="duel" id="duel"></div>
       <div class="opt">
         <h2>플레이 방식</h2>
@@ -1430,6 +1438,41 @@ DOCS.mahito={
  ]
 };
 var G=null;
+/* 온라인 대전: 호스트가 전투를 계산하고 게스트는 입력과 상태 스냅샷을 주고받습니다. */
+var NET={ws:null,role:null,room:null,peerChar:null,connected:false,remoteInput:{x:0,y:0},lastInputAt:0,lastSnapshotAt:0,starting:false,smoothTargets:null};
+function mpStatus(t){var e=$('#mpStatus');if(e)e.textContent=t}
+function mpSend(o){if(NET.ws&&NET.ws.readyState===1)NET.ws.send(JSON.stringify(o))}
+function mpConnect(done){
+  if(NET.ws&&NET.ws.readyState===1){done&&done();return}
+  var proto=location.protocol==='https:'?'wss:':'ws:';
+  var ws=new WebSocket(proto+'//'+location.host+'/ws');NET.ws=ws;
+  ws.onopen=function(){NET.connected=true;done&&done()};
+  ws.onclose=function(){NET.connected=false;mpStatus('서버 연결이 끊겼습니다. 서버 주소와 실행 상태를 확인하세요.')};
+  ws.onerror=function(){mpStatus('서버에 연결할 수 없습니다. 먼저 서버를 실행하고 배포해야 합니다.')};
+  ws.onmessage=function(ev){var m;try{m=JSON.parse(ev.data)}catch(e){return}mpMessage(m)};
+}
+function mpPack(root){var nodes=[],seen=new Map();function enc(v){if(v===null||typeof v==='string'||typeof v==='number'||typeof v==='boolean')return v;if(typeof v==='undefined'||typeof v==='function'||typeof v!=='object')return {$u:1};if(seen.has(v))return {$r:seen.get(v)};var id=nodes.length;seen.set(v,id);var n={a:Array.isArray(v),v:Array.isArray(v)?[]:{}};nodes.push(n);if(Array.isArray(v)){for(var i=0;i<v.length;i++)n.v[i]=enc(v[i])}else{Object.keys(v).forEach(function(k){if(typeof v[k]!=='function')n.v[k]=enc(v[k])})}return {$r:id}}return {root:enc(root),nodes:nodes}}
+function mpUnpack(pack){if(!pack||!pack.nodes||!pack.root)return null;var a=pack.nodes.map(function(n){return n.a?[]:{}});function dec(v){if(v&&typeof v==='object'){if('$r'in v)return a[v.$r];if('$u'in v)return undefined}return v}pack.nodes.forEach(function(n,i){Object.keys(n.v).forEach(function(k){a[i][k]=dec(n.v[k])})});return a[pack.root.$r]}
+function mpMessage(m){
+  if(m.type==='created'){NET.role='host';NET.room=m.code;mpStatus('방 코드: '+m.code+' · 친구에게 코드 또는 초대 링크를 보내세요. 상대 접속을 기다리는 중입니다.');$('#mpCopy').disabled=false;return}
+  if(m.type==='joined'){NET.role='guest';NET.room=m.code;mpStatus('방 '+m.code+'에 입장했습니다. 캐릭터를 선택한 뒤 준비를 기다리세요.');mpSend({type:'ready',character:sel.id});return}
+  if(m.type==='peerJoined'){mpStatus('친구가 접속했습니다. 상대가 캐릭터를 선택하면 전투를 시작할 수 있습니다.');return}
+  if(m.type==='peerReady'){NET.peerChar=m.character;mpStatus('상대 캐릭터: '+(CH[m.character]?CH[m.character].name:m.character)+'. 전투를 시작합니다.');if(NET.role==='host')mpStartHost();return}
+  if(m.type==='start'){NET.peerChar=m.hostCharacter;NET.role='guest';newGame(m.hostCharacter,m.diff,{foe:m.guestCharacter,auto:false,big:m.big});G.f[1].ai=null;G.f[0].ai=null;G.me=G.f[1];G.foe=G.f[0];G.online=true;G.netHost=false;$('#select').hidden=true;$('#fight').hidden=false;$('#ov').hidden=true;setupHud(hudMe,G.me);setupHud(hudFoe,G.foe);buildButtons();$('.controls').style.display='';sizeCanvas();mpStatus('온라인 대전 중 · 친구와 실시간 연결됨');return}
+  if(m.type==='snapshot'&&NET.role==='guest'&&m.state){var ng=mpUnpack(m.state);if(ng&&ng.f&&ng.f.length>=2){ng.online=true;ng.netHost=false;ng.me=ng.f[1];ng.foe=ng.f[0];if(G&&G.f&&G.f.length>=2){var oldMe=G.me||G.f[1],oldFoe=G.foe||G.f[0];NET.smoothTargets={me:{x:ng.f[1].x,y:ng.f[1].y},foe:{x:ng.f[0].x,y:ng.f[0].y}};if(oldMe&&isFinite(oldMe.x)&&isFinite(oldMe.y)){ng.f[1].x=oldMe.x;ng.f[1].y=oldMe.y}if(oldFoe&&isFinite(oldFoe.x)&&isFinite(oldFoe.y)){ng.f[0].x=oldFoe.x;ng.f[0].y=oldFoe.y}}G=ng}return}
+  if(m.type==='input'&&NET.role==='host'){NET.remoteInput=m.input||{x:0,y:0};return}
+  if(m.type==='skill'&&NET.role==='host'&&G&&!G.over){tryUse(G.foe,m.index|0);return}
+  if(m.type==='trial'&&NET.role==='host'&&G&&G.domain&&G.domain.type==='trial'&&G.domain.ph===1&&!G.domain.stmt&&other(G.domain.owner)===G.foe){var td=G.domain;td.stmt=m.choice;td.pt=0;td.say='피고인 진술: '+STMT_N[m.choice];td.sub='';return}
+  if(m.type==='error'){mpStatus(m.message||'온라인 연결 오류');return}
+  if(m.type==='left'){mpStatus('상대 연결이 종료되었습니다.');return}
+}
+function mpStartHost(){if(NET.role!=='host'||!NET.peerChar||NET.starting)return;NET.starting=true;newGame(sel.id,sel.diff,{foe:NET.peerChar,auto:false,big:sel.big});G.me.ai=null;G.foe.ai=null;G.online=true;G.netHost=true;$('#select').hidden=true;$('#fight').hidden=false;$('#ov').hidden=true;setupHud(hudMe,G.me);setupHud(hudFoe,G.foe);buildButtons();$('.controls').style.display='';sizeCanvas();mpSend({type:'start',hostCharacter:sel.id,guestCharacter:NET.peerChar,diff:sel.diff,big:sel.big});mpStatus('온라인 대전 중 · 친구와 실시간 연결됨')}
+function mpInit(){
+  $('#mpCreate').addEventListener('click',function(){mpConnect(function(){NET.role='host';mpSend({type:'create',character:sel.id})});mpStatus('서버에 연결 중…')});
+  $('#mpJoin').addEventListener('click',function(){var code=$('#mpCode').value.trim().toUpperCase();if(!code){mpStatus('방 코드를 입력하세요.');return}mpConnect(function(){mpSend({type:'join',code:code,character:sel.id})});mpStatus('방에 입장 중…')});
+  $('#mpCopy').addEventListener('click',function(){if(!NET.room)return;var url=location.origin+location.pathname+'?room='+encodeURIComponent(NET.room);if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(url).then(function(){mpStatus('초대 링크를 복사했습니다.')},function(){mpStatus('초대 링크: '+url)});else mpStatus('초대 링크: '+url)});
+  var params=new URLSearchParams(location.search),room=params.get('room');if(room){$('#mpCode').value=room;mpStatus('초대 링크로 방에 연결 중입니다…');mpConnect(function(){NET.role='guest';mpSend({type:'join',code:room,character:sel.id})})}
+}
 var sel={todo:safeGet('sjk_todo','1')==='1',id:safeGet('sjk_id','gojo'),foe:safeGet('sjk_foe','auto'),diff:safeGet('sjk_diff','normal'),auto:safeGet('sjk_auto','0')==='1',big:safeGet('sjk_big','0')==='1',tab:'me'};
 if(!CH[sel.id])sel.id='gojo';
 if(sel.foe!=='auto'&&!CH[sel.foe])sel.foe='auto';
@@ -5207,7 +5250,7 @@ function trialPick(s){
 }
 (function(){
   var ui=$('#trialUI'),rb=$('#retrialBtn'),bs=ui?ui.querySelectorAll('button'):[],i;
-  for(i=0;i<bs.length;i++)(function(b){b.addEventListener('click',function(e){e.preventDefault();trialPick(b.getAttribute('data-s'))})})(bs[i]);
+  for(i=0;i<bs.length;i++)(function(b){b.addEventListener('click',function(e){e.preventDefault();if(G&&G.online&&!G.netHost)mpSend({type:'trial',choice:b.getAttribute('data-s')});else trialPick(b.getAttribute('data-s'))})})(bs[i]);
   if(rb)rb.addEventListener('click',function(e){e.preventDefault();if(G&&humanDef(G.me))requestRetrial(G.me)});
 })();
 
@@ -7218,7 +7261,7 @@ function separate(){
     b.x=clamp(b.x+nx*pu,b.r,W-b.r);b.y=clamp(b.y+ny*pu,b.r,H-b.r);
   }
 }
-function step(inp){
+function step(inp,inpFoe){
   if(G.count>0){G.count-=DT;updateFx();rikaIntro(G.me);rikaIntro(G.foe);return}
   if(G.over){
     G.overT+=DT;updateFx();
@@ -7228,7 +7271,7 @@ function step(inp){
   if(G.freeze>0){G.freeze--;return}
   G.time+=DT;
   updateFighter(G.me,inp);
-  updateFighter(G.foe,inp);
+  updateFighter(G.foe,inpFoe||{x:0,y:0});
   if(G.me.todo)updateTodo(G.me);if(G.foe.todo)updateTodo(G.foe);
   separate();
   updateBlues();updateProj();updateFlies();updateDomain();retrialAI();updateTimers();updateFx();
@@ -8988,7 +9031,7 @@ function buildButtons(){
     (function(idx,btn){
       btn.addEventListener('pointerdown',function(e){
         e.preventDefault();
-        if(G&&!G.paused&&!G.auto){tryUse(G.me,idx);btn.classList.add('on');setTimeout(function(){btn.classList.remove('on')},110)}
+        if(G&&!G.paused&&!G.auto){if(G.online&&!G.netHost)mpSend({type:'skill',index:idx});else tryUse(G.me,idx);btn.classList.add('on');setTimeout(function(){btn.classList.remove('on')},110)}
       });
     })(i,b);
     host.appendChild(b);btns.push(b);
@@ -9012,7 +9055,7 @@ joy.addEventListener('pointercancel',joyEnd);
 window.addEventListener('keydown',function(e){
   var k=e.key.toLowerCase();
   if(G&&!$('#fight').hidden){
-    if(k>='1'&&k<='9'){if(!G.paused&&!G.auto)tryUse(G.me,parseInt(k,10)-1);e.preventDefault();return}
+    if(k>='1'&&k<='9'){if(!G.paused&&!G.auto){if(G.online&&!G.netHost)mpSend({type:'skill',index:parseInt(k,10)-1});else tryUse(G.me,parseInt(k,10)-1)}e.preventDefault();return}
     if(k==='t'){toggleTodo();e.preventDefault();return}
     if(k==='p'||k==='escape'){togglePause();return}
     if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].indexOf(k)>=0)e.preventDefault();
@@ -9136,6 +9179,8 @@ function renderSelect(){
 
 /* ---------- 전투 시작 / 종료 ---------- */
 function startGame(){
+  if(NET.role==='host'){if(NET.peerChar)mpStartHost();else mpStatus('먼저 친구가 방 코드 또는 초대 링크로 입장해야 합니다.');return}
+  if(NET.role==='guest'){mpSend({type:'ready',character:sel.id});mpStatus('호스트가 대전을 시작하기를 기다리는 중입니다.');return}
   newGame(sel.id,sel.diff,{foe:foeIdOf(sel.id),auto:sel.auto,big:sel.big});
   $('#select').hidden=true;$('#fight').hidden=false;$('#ov').hidden=true;
   setupHud(hudMe,G.me);setupHud(hudFoe,G.foe);
@@ -9176,6 +9221,7 @@ function togglePause(){
   }else $('#ov').hidden=true;
 }
 $('#btnPause').addEventListener('click',togglePause);
+$('#singleMode').addEventListener('click',function(){NET.role=null;NET.peerChar=null;NET.starting=false;NET.connected=false;sel.auto=false;safeSet('sjk_auto','0');renderSelect();mpStatus('1인 모드 선택됨 · 캐릭터와 상대 AI 난이도를 고른 뒤 전투 시작을 누르세요.');$('#duel').scrollIntoView({behavior:'smooth',block:'start'});});
 $('#btnStart').addEventListener('click',startGame);
 document.addEventListener('visibilitychange',function(){if(document.hidden&&G&&!G.paused&&!G.over&&G.count<=0)togglePause()});
 
@@ -9185,10 +9231,14 @@ function frame(ts){
   requestAnimationFrame(frame);
   var dt=Math.min(0.05,(ts-last)/1000||0);last=ts;
   if(!G||$('#fight').hidden)return;
-  if(!G.paused){
+  if(G.online&&!G.netHost){
+    var now=Date.now();if(NET.connected&&now-NET.lastInputAt>45){NET.lastInputAt=now;mpSend({type:'input',input:inputVec()})}
+    if(NET.smoothTargets&&G.me&&G.foe){var blend=Math.min(1,dt*14),st=NET.smoothTargets;G.me.x+=(st.me.x-G.me.x)*blend;G.me.y+=(st.me.y-G.me.y)*blend;G.foe.x+=(st.foe.x-G.foe.x)*blend;G.foe.y+=(st.foe.y-G.foe.y)*blend;}
+  }else if(!G.paused){
     acc+=dt;
     var inp=inputVec();
-    while(acc>=DT){step(inp);acc-=DT}
+    while(acc>=DT){step(inp,(G.online&&G.netHost)?NET.remoteInput:undefined);acc-=DT}
+    if(G.online&&G.netHost&&NET.connected&&Date.now()-NET.lastSnapshotAt>55){NET.lastSnapshotAt=Date.now();try{mpSend({type:'snapshot',state:mpPack(G)})}catch(e){}}
   }
   render();hudUpdate();todoBtnUpdate();trialUiUpdate();
 }
@@ -9196,6 +9246,7 @@ if(document.fonts&&document.fonts.load){
   try{document.fonts.load('40px "Black Han Sans"');document.fonts.load('700 20px "Noto Sans KR"')}catch(e){}
 }
 renderSelect();
+mpInit();
 requestAnimationFrame(frame);
 
 window.__sim={MG:MG,mgGarden:mgGarden,render:render,newGame:newGame,step:step,get:function(){return G},tryUse:tryUse,CH:CH,LOGIC:LOGIC,DIFF:DIFF,drain:drain,hit:hit,lg:lg,NA:NA,MA:MA,startDomain:startDomain,HG:HG,CHARGES:CHARGES,requestRetrial:requestRetrial,canRetrial:canRetrial,trialPick:trialPick};
